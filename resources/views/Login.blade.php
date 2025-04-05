@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
+    @vite(['resources/css/Login.css', 'resources/js/Login.js'])
 </head>
 <body>
     <div>
@@ -24,16 +25,5 @@
             <a href="{{ route('registro.form') }}">Regístrate aquí</a>
         </div>
     </div>
-    <style>
-        .formulario, .registro {
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .error {
-            color: red;
-        }
-    </style>
 </body>
 </html>
