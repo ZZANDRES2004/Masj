@@ -11,10 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestión Residencial</title>
-<<<<<<< HEAD
-=======
     <link rel="stylesheet" href="{{ asset('css/residente.css') }}">
->>>>>>> e40b0bb83b23239646203f1babfc518808c84a6b
 </head>
 <body>
      <!-- ENCABEZADO -->
@@ -24,7 +21,6 @@
     <div class="user-menu">
     <div class="user-info" id="user-dropdown-toggle">
         <img src="{{ asset('usuario.png') }}" class="user-avatar" alt="Avatar">
-        <span>{{ $usuario->nombre }} | Apto {{ $usuario->apartamento }}</span>
         <span class="dropdown-icon">▼</span>
     </div>
     <div class="dropdown-menu" id="user-dropdown-menu">
@@ -48,19 +44,11 @@
         <div class="container">
             <div class="nav-content">
                 <ul class="nav-links">
-<<<<<<< HEAD
-                    <li><a href="#" class="nav-link active" data-section="dashboard">Inicio</a></li>
-                    <li><a href="#" class="nav-link" data-section="quejas">Quejas</a></li>
-                    <li><a href="#" class="nav-link" data-section="zonas-comunes">Zonas Comunes</a></li>
-                    <li><a href="#" class="nav-link" data-section="visitantes">Visitantes</a></li>
-                    <li><a href="" class="nav-link" data-section="correspondencia">Correspondencia</a></li>
-=======
                     <li><a href="{{ route('dashboard') }}" class="nav-link active" data-section="dashboard">Inicio</a></li>
                     <li><a href="{{ route('quejas.index') }}" class="nav-link" data-section="quejas">Quejas</a></li>
                     <li><a href="{{ route('zonas-comunes.index') }}" class="nav-link" data-section="zonas-comunes">Zonas Comunes</a></li>
                     <li><a href="{{ route('visitantes.index') }}" class="nav-link" data-section="visitantes">Visitantes</a></li>
                     <li><a href="{{ route('correspondencia.index') }}" class="nav-link" data-section="correspondencia">Correspondencia</a></li>
->>>>>>> e40b0bb83b23239646203f1babfc518808c84a6b
                 </ul>
             </div>
         </div>
@@ -70,7 +58,6 @@
         <div class="main-content" style="justify-content: center;">
             <div class="content-panel" id="content-panel">
                 <div id="dashboard-content">
-                    <h2>{{ $usuario->nombre }}|Apto {{ $usuario->apartamento }}</h2>
                     <br>
                     <p>Bienvenido al sistema de gestión residencial MASJ.</p>
                     <br>
@@ -97,20 +84,12 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <script src="../resources/js/residente/perfil.js"></script>
-    <script src="../resources/js/residente/residente.js"></script>
-    <script src="../resources/js/residente/quejas.js"></script>
-    <script src="../resources/js/residente/zonas.js"></script>
-    <script src="../resources/js/residente/visitante.js"></script>
-    <script src="../resources/js/residente/correspondencia.js"></script>
-=======
     <script src="{{ asset('js/perfil.js') }}"></script>
     <script src="{{ asset('js/residente.js') }}"></script>
     <script src="{{ asset('js/quejas.js') }}"></script>
     <script src="{{ asset('js/zonas.js') }}"></script>
     <script src="{{ asset('js/visitantes.js') }}"></script>
     <script src="{{ asset('js/correspondencia.js') }}"></script>
->>>>>>> e40b0bb83b23239646203f1babfc518808c84a6b
+
 </body>
 </html>

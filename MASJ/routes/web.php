@@ -36,5 +36,18 @@ Route::get('/residente/dashboard', function () {
     return view('residente.dashboardR');
 })->name('residente.dashboardR');
 
+// Rutas para quejas
+Route::resource('quejas', QuejasController::class);
+
+// Rutas para zonas comunes
+Route::resource('zonas-comunes', ZonasComunesController::class);
+
+// Rutas para visitantes
+Route::resource('visitantes', VisitantesController::class);
+
+// Rutas para correspondencia
+Route::resource('correspondencia', CorrespondenciaController::class);
+
+
 
 Auth::routes(['register' => false, 'reset' => false]); 

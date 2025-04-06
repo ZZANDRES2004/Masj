@@ -3,41 +3,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Queja;
 use App\Models\Reserva;
 use App\Models\Visitante;
 use App\Models\Correspondencia;
-use App\Models\Usuario;
-
+use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     public function index()
     {
-        // Obtener el usuario actual
-        $usuario = Auth::user();
+        $quejas = Queja::where('apartamento_id', Auth::user()->apartamento_id)->count();
+        $reservas = Reserva::where('apartamento_id', Auth::user()->apartamento_id)->count();
+        $visitantes = Visitante::where('apartamento_id', Auth::user()->apartamento_id)->count();
+        $correspondencia = Correspondencia::where('apartamento_id', Auth::user()->apartamento_id)->count();
         
-        // Contar las quejas activas del usuario
-        $quejas = Queja::where('apartamento_id', $usuario->apartamento_id)
-                      ->where('estado', 'activa')
-                      ->count();
-        
-        // Contar las reservas activas
-        $reservas = Reserva::where('apartamento_id', $usuario->apartamento_id)
-                         ->where('estado', 'activa')
-                         ->count();
-        
-        // Contar los visitantes de los últimos 30 días
-        $visitantes = Visitante::where('apartamento_id', $usuario->apartamento_id)
-                             ->whereDate('fecha_visita', '>=', now()->subDays(30))
-                             ->count();
-        
-        // Contar la correspondencia de los últimos 3 meses
-        $correspondencia = Correspondencia::where('apartamento_id', $usuario->apartamento_id)
-                                       ->whereDate('fecha_recepcion', '>=', now()->subMonths(3))
-                                       ->count();
-        
-        return view('dashboard', compact('usuario', 'quejas', 'reservas', 'visitantes', 'correspondencia'));
+        return view('residente.dashboardR', compact('quejas', 'reservas', 'visitantes', 'correspondencia'));
     }
 }
