@@ -30,4 +30,10 @@ Route::get('/', function () {
     return redirect()->route('Login.form');
 });
 
+
+Route::get('/residente/dashboard', function () {
+    return view('residente.dashboardR');
+})->name('residente.dashboardR');
+
+
 Auth::routes(['register' => false, 'reset' => false]); 

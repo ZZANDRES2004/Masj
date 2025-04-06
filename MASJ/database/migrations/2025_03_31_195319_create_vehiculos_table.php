@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string('PlacaVehiculo', 6);
             $table->string('MarcaVehiculo', 15)->nullable();
             $table->string('ModeloVehiculo', 25)->nullable();
-            $table->integer('idBahia')->index('fk_vehiculos_parqueadero1_idx');
+            $table->integer('idBahia');
             $table->integer('idResidente')->unsigned();
             $table->integer('idVisitante')->nullable();
+            $table->timestamp('hora_ingreso')->nullable();
+            $table->timestamp('hora_salida')->nullable();
+            $table->integer('valor_pagado')->nullable();
         });
     }
 

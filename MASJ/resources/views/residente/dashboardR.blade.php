@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestión Residencial</title>
-    <link rel="stylesheet" href="../css/residente.css">
+    @vite(['resources/css/residente/residente.css', 'resources/js/residente/residente.js'])
 </head>
 <body>
      <!-- ENCABEZADO -->
@@ -42,7 +42,7 @@
                     <li><a href="#" class="nav-link" data-section="quejas">Quejas</a></li>
                     <li><a href="#" class="nav-link" data-section="zonas-comunes">Zonas Comunes</a></li>
                     <li><a href="#" class="nav-link" data-section="visitantes">Visitantes</a></li>
-                    <li><a href="#" class="nav-link" data-section="correspondencia">Correspondencia</a></li>
+                    <li><a href="" class="nav-link" data-section="correspondencia">Correspondencia</a></li>
                 </ul>
             </div>
         </div>
@@ -79,11 +79,11 @@
             </div>
         </div>
     </div>
-    <script src="../js/perfil.js"></script>
-    <script src="../js/residente.js"></script>
-    <script src="../js/quejas.js"></script>
-    <script src="../js/zonas.js"></script>
-    <script src="../js/visitantes.js"></script>
-    <script src="../js/correspondencia.js"></script>
+    <script src="../resources/js/residente/perfil.js"></script>
+    <script src="../resources/js/residente/residente.js"></script>
+    <script src="../resources/js/residente/quejas.js"></script>
+    <script src="../resources/js/residente/zonas.js"></script>
+    <script src="../resources/js/residente/visitante.js"></script>
+    <script src="../resources/js/residente/correspondencia.js"></script>
 </body>
 </html>

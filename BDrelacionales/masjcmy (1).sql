@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-04-2025 a las 06:19:56
+-- Tiempo de generación: 07-04-2025 a las 00:37:17
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -107,23 +107,39 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(18, '2025_03_31_195319_create_alquilerzonascomunes_table', 1),
-(19, '2025_03_31_195319_create_apartamentos_table', 1),
-(20, '2025_03_31_195319_create_parqueadero_table', 1),
-(21, '2025_03_31_195319_create_quejas_table', 1),
-(22, '2025_03_31_195319_create_residentes_table', 1),
-(23, '2025_03_31_195319_create_sessions_table', 1),
-(24, '2025_03_31_195319_create_usuario_table', 1),
-(25, '2025_03_31_195319_create_vehiculos_table', 1),
-(26, '2025_03_31_195319_create_visitante_table', 1),
-(27, '2025_03_31_195319_create_zonacomun_table', 1),
-(28, '2025_03_31_195321_create_ObtenerAlquileresParqueaderoVisitantes_proc', 1),
-(29, '2025_03_31_195321_create_ObtenerCorrespondenciaPorFecha_proc', 1),
-(30, '2025_03_31_195322_add_foreign_keys_to_alquilerzonascomunes_table', 1),
-(31, '2025_03_31_195322_add_foreign_keys_to_quejas_table', 1),
-(32, '2025_03_31_195322_add_foreign_keys_to_vehiculos_table', 1),
-(33, '2025_03_31_195322_add_foreign_keys_to_visitante_table', 1),
-(34, '2025_04_05_215412_create_password_reset_tokens_table', 1);
+(1, '2025_03_31_195319_create_alquilerzonascomunes_table', 1),
+(2, '2025_03_31_195319_create_apartamentos_table', 1),
+(3, '2025_03_31_195319_create_parqueadero_table', 1),
+(4, '2025_03_31_195319_create_quejas_table', 1),
+(5, '2025_03_31_195319_create_residentes_table', 1),
+(6, '2025_03_31_195319_create_sessions_table', 1),
+(7, '2025_03_31_195319_create_usuario_table', 1),
+(8, '2025_03_31_195319_create_vehiculos_table', 1),
+(9, '2025_03_31_195319_create_visitante_table', 1),
+(10, '2025_03_31_195319_create_zonacomun_table', 1),
+(11, '2025_03_31_195321_create_ObtenerAlquileresParqueaderoVisitantes_proc', 1),
+(12, '2025_03_31_195321_create_ObtenerCorrespondenciaPorFecha_proc', 1),
+(13, '2025_03_31_195322_add_foreign_keys_to_alquilerzonascomunes_table', 1),
+(14, '2025_03_31_195322_add_foreign_keys_to_quejas_table', 1),
+(15, '2025_03_31_195322_add_foreign_keys_to_residentes_table', 1),
+(16, '2025_03_31_195322_add_foreign_keys_to_vehiculos_table', 1),
+(17, '2025_03_31_195322_add_foreign_keys_to_visitante_table', 1),
+(18, '2025_04_05_215412_create_password_reset_tokens_table', 1),
+(19, '2025_04_06_191751_create_paqueterias_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `paqueterias`
+--
+
+CREATE TABLE `paqueterias` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `remitente` varchar(255) NOT NULL,
+  `destinatario` varchar(255) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `recibido` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -134,7 +150,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `parqueadero` (
   `idBahia` int(11) NOT NULL,
   `Novedad` text DEFAULT NULL,
-  `Estado` enum('Ocupado','Desocupado') NOT NULL
+  `Estado` enum('Ocupado','Desocupado') NOT NULL DEFAULT 'Desocupado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -228,7 +244,10 @@ CREATE TABLE `vehiculos` (
   `ModeloVehiculo` varchar(25) DEFAULT NULL,
   `idBahia` int(11) NOT NULL,
   `idResidente` int(10) UNSIGNED NOT NULL,
-  `idVisitante` int(11) DEFAULT NULL
+  `idVisitante` int(11) DEFAULT NULL,
+  `hora_ingreso` timestamp NULL DEFAULT NULL,
+  `hora_salida` timestamp NULL DEFAULT NULL,
+  `valor_pagado` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -244,7 +263,10 @@ CREATE TABLE `visitante` (
   `TipoDocumento` varchar(10) NOT NULL,
   `NumDocumento` int(11) NOT NULL,
   `idResidente` int(10) UNSIGNED NOT NULL,
-  `idGuardia` int(11) NOT NULL
+  `idGuardia` int(11) NOT NULL,
+  `apartamento` varchar(255) NOT NULL,
+  `hora_entrada` time DEFAULT NULL,
+  `hora_salida` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -281,6 +303,12 @@ ALTER TABLE `apartamentos`
 -- Indices de la tabla `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `paqueterias`
+--
+ALTER TABLE `paqueterias`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -329,7 +357,7 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `vehiculos`
   ADD PRIMARY KEY (`idVehiculo`),
-  ADD KEY `fk_vehiculos_parqueadero1_idx` (`idBahia`),
+  ADD KEY `fk_Vehiculos_Parqueadero1` (`idBahia`),
   ADD KEY `fk_Vehiculos_Residentes1` (`idResidente`);
 
 --
@@ -359,7 +387,13 @@ ALTER TABLE `apartamentos`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de la tabla `paqueterias`
+--
+ALTER TABLE `paqueterias`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -389,6 +423,13 @@ ALTER TABLE `alquilerzonascomunes`
 --
 ALTER TABLE `quejas`
   ADD CONSTRAINT `fk_Quejas_Residentes1` FOREIGN KEY (`idResidente`) REFERENCES `residentes` (`idResidente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `residentes`
+--
+ALTER TABLE `residentes`
+  ADD CONSTRAINT `fk_Residentes_Apartamentos` FOREIGN KEY (`idApartamento`) REFERENCES `apartamentos` (`idApartamentos`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Residentes_Usuario` FOREIGN KEY (`idResidente`) REFERENCES `usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `vehiculos`

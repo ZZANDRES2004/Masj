@@ -122,7 +122,7 @@
 
             <input type="password" id="confirmPassword" name="confirmate" required placeholder="Confirmar contraseña"
                 /><br />
-            @error('Contrasena')
+            @error('Contraseña')
             <p class="error">{{ $message }}</p>
             @enderror
             <div id="passwordStrength" class="password-strength"></div>

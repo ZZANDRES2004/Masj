@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('NumDocumento');
             $table->integer('idResidente')->unsigned();
             $table->integer('idGuardia');
+            $table->string('apartamento'); // <- nombre actualizado
+            $table->time('hora_entrada')->nullable();
+            $table->time('hora_salida')->nullable(); // <- no obligatoria
         });
     }
 

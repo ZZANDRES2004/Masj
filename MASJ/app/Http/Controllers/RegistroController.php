@@ -43,6 +43,6 @@ class RegistroController extends Controller
         ]);
 
         return redirect()->route('Login.form')->with('status', '¡Registro exitoso! Por favor, inicia sesión.');
-
     }
+
 }

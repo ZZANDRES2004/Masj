@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('parqueadero', function (Blueprint $table) {
-            $table->integer('idBahia')->primary();
-            $table->text('Novedad')->nullable();
-            $table->enum('Estado', ['Ocupado', 'Desocupado'])->default('Desocupado');
+        Schema::create('paqueterias', function (Blueprint $table) {
+            $table->id();
+            $table->string('remitente');
+            $table->string('destinatario');
+            $table->text('descripcion')->nullable();
+            $table->boolean('recibido')->default(false);
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('parqueadero');
+        Schema::dropIfExists('paqueterias');
     }
 };
