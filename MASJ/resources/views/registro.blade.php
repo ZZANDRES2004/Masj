@@ -118,11 +118,10 @@
             <p class="error">{{ $message }}</p>
             @enderror
 
-            <input type="password" id="Contrasena" name="password" required placeholder="Contraseña" minlength="6"
-                maxlength="20" /><br />
+            <input type="password" id="Contraseña" name="Contraseña" required placeholder="Contraseña" /><br />
 
-            <input type="password" id="confirmPassword" name="confirme" required placeholder="Confirmar contraseña"
-                minlength="6" maxlength="20" /><br />
+            <input type="password" id="confirmPassword" name="confirmate" required placeholder="Confirmar contraseña"
+                /><br />
             @error('Contrasena')
             <p class="error">{{ $message }}</p>
             @enderror

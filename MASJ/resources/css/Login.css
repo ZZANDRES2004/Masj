@@ -1,0 +1,189 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+
+    background: linear-gradient(45deg, rgb(91, 13, 163), rgb(170, 24, 92), rgb(117, 6, 99), rgb(91, 13, 163));
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: gradient 15s ease infinite;
+    -webkit-animation: gradient 15s ease infinite;
+    -moz-animation: gradient 15s ease infinite;
+    -o-animation: gradient 15s ease infinite;
+}
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.ci{
+    color: rgb(0, 0, 0);
+    backdrop-filter: blur(2px);
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10vh;
+}
+
+.contenedor{
+    width: 30%;
+    height: 101vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    background: rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+
+    animation: intro 1s ease-in forwards running normal;
+    -webkit-animation: intro 1s ease-in forwards running normal;
+    -moz-animation: intro 1s ease-in forwards running normal;
+    -o-animation: intro 1s ease-in forwards running normal;
+}
+
+@keyframes intro {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+.contenedor3{
+    width: 30%;
+    height: 101vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    background: rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="email"], [type="password"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    height: 40px;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 25vh;
+    border-bottom: 2px solid rgb(240, 2, 2);
+}
+
+input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+input:hover{
+    border-radius: 9px 9px 0px 0px;
+    border-bottom: 4px solid orangered;
+}
+
+input:focus{
+    outline: none;
+    transition: all 500ms;
+    border-radius: 9px 9px 0px 0px;
+    border-bottom: 4px solid orangered;
+    border-color: 1px solid grey;
+    background-color: white;
+
+    box-shadow: inset 5px 5px 5px 0px rgba(0, 0, 0, 0.534);
+}
+
+input::placeholder{
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.521);
+    text-align: center;
+}
+
+input:focus::placeholder{
+    color: rgb(0, 0, 0);
+}
+
+.enviar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20em;
+    border-radius: 9px;
+    border: 1px solid rgba(128, 128, 128, 0.863);
+    height: 45px;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+  
+  .enviar:focus{
+    border: 1px solid rgba(255, 255, 255, 0.808);
+    background-color: green;
+  }
+  .enviar:hover {
+  background-color: rgba(5, 221, 5, 0.589);
+  }
+
+.cuenta{
+  display: flex;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  margin-top: 20px;
+  margin-bottom: 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.inicia{
+    display: flex;
+    font-size: 16px;
+    color: rgb(3, 104, 255);
+    margin-top: 0px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .inicia:hover{
+    color: blueviolet;
+  }
+
+  .inicia:focus{
+    color: blueviolet;
+  }
+
+  .contraseña{
+    color:rgb(3, 104, 255);
+    margin-top: 10px;
+    display: flex;
+    font-size: 12px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .contraseña:hover{
+    color: blueviolet;
+  }
+  .contraseña:focus{
+    color: blueviolet;
+  }

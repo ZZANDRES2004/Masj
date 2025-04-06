@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('ApellidosVisitante', 40);
             $table->string('TipoDocumento', 10);
             $table->integer('NumDocumento');
-            $table->integer('idResidente')->index('fk_visitante_residentes1_idx');
+            $table->integer('idResidente')->unsigned();
             $table->integer('idGuardia');
         });
     }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('SegundoApellido', 30)->nullable();
             $table->string('NumeroCelular', 15);
             $table->string('CorreoElectronico', 40);
-            $table->string('Contrasena', 64);
+            $table->string('Contraseña', 64);
             $table->string('ConjuntoNombre', 25)->index('fk_usuario_conjunto1_idx');
             $table->date('FechaNacimiento');
             $table->enum('Estado', ['activo', 'inactivo']);

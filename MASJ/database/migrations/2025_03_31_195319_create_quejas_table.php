@@ -15,7 +15,7 @@ return new class extends Migration
             $table->integer('idQueja')->primary();
             $table->date('FechaQueja');
             $table->text('MotivoQueja');
-            $table->integer('idResidente')->index('fk_quejas_residentes1_idx');
+            $table->integer('idResidente')->unsigned();
             $table->tinyInteger('EstadoQueja');
             $table->integer('idAdministrador');
         });

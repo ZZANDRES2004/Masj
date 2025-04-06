@@ -1,34 +1,33 @@
 <?php
+// Archivo: routes/web.php
 
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroController;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CustomPasswordResetController;
 
-// Ruta para mostrar el formulario de registro (si es necesario, si no, puedes quitarla si '/' ya lo hace)
 Route::get('/registro', function () {
-     return view('registro');
- })->name('registro.form'); // Nombre diferente para GET
+    return view('registro');
+})->name('registro.form');
 
-// Ruta para procesar el formulario de registro (esta ya la tenías bien)
-Route::post('/registro', [RegistroController::class, 'store'])->name('registro'); // Mantenido
+Route::post('/registro', [RegistroController::class, 'store'])->name('registro');
 
-// Ruta para MOSTRAR el formulario de login
-// Usa 'login' (minúscula) para el método si así se llama en tu controlador, o crea 'showLoginForm'
-// Asumiré que quieres usar el método 'Login' que definiste en la ruta original, pero debe existir en el Controller.
-// O más comúnmente:
-Route::get('/Login', [LoginController::class, 'showLoginForm'])->name('Login.form'); // Ruta GET para mostrar
+Route::get('/Login', [LoginController::class, 'showLoginForm'])->name('Login.form');
+Route::post('/Login', [LoginController::class, 'Login'])->name('Login.attempt');
 
-// Ruta para PROCESAR el formulario de login
-Route::post('/Login', [LoginController::class, 'Login'])->name('Login.attempt'); // Ruta POST para procesar
+// Rutas para restablecimiento de contraseña
+Route::get('/forgot-password', [CustomPasswordResetController::class, 'showForgotForm'])
+    ->name('password.request');
+Route::post('/forgot-password', [CustomPasswordResetController::class, 'sendResetLink'])
+    ->name('password.email');
+Route::get('/reset-password/{token}', [CustomPasswordResetController::class, 'showResetForm'])
+    ->name('password.reset');
+Route::post('/reset-password', [CustomPasswordResetController::class, 'resetPassword'])
+    ->name('password.update');
 
-// Ruta raíz (opcional, si quieres que vaya a registro o login por defecto)
 Route::get('/', function () {
-     // Puedes redirigir a la que prefieras o mostrar una vista
-     return redirect()->route('Login.form');
-     // o return view('welcome');
+    return redirect()->route('Login.form');
 });
 
-// Debes tener una ruta 'home' a la que redirige el login exitoso
-Route::get('/home', function() {
-    return 'Bienvenido - Sesión Iniciada'; // Vista de bienvenida simple
-})->name('home')->middleware('auth'); // Asegura que solo usuarios autenticados entren
+Auth::routes(['register' => false, 'reset' => false]); 

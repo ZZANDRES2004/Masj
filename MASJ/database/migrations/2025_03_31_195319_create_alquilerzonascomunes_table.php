@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('TotalPago');
             $table->dateTime('HoraLimite');
             $table->integer('idZonaComun')->index('fk_alquilerzonascomunes_zonacomun1_idx');
-            $table->integer('idResidente')->index('fk_alquilerzonascomunes_residentes1_idx');
+            $table->integer('idResidente')->unsigned();
         });
     }
 

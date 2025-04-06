@@ -11,6 +11,7 @@ body{
 
     background: linear-gradient(45deg, rgb(91, 13, 163), rgb(170, 24, 92), rgb(117, 6, 99), rgb(91, 13, 163));
     background-size: 400% 400%;
+    background-attachment: fixed;
     animation: gradient 15s ease infinite;
     -webkit-animation: gradient 15s ease infinite;
     -moz-animation: gradient 15s ease infinite;

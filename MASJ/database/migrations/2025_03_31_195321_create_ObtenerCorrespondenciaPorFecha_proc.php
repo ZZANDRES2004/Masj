@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
+
 return new class extends Migration
 {
     /**
@@ -10,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        DB::unprepared('DROP PROCEDURE IF EXISTS ObtenerCorrespondenciaPorFecha');
         DB::unprepared("CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtenerCorrespondenciaPorFecha`(IN `fecha_ingreso` DATE)
 BEGIN
     SELECT 
@@ -36,6 +38,7 @@ END");
      */
     public function down(): void
     {
+        DB::unprepared('DROP PROCEDURE IF EXISTS ObtenerCorrespondenciaPorFecha');
         DB::unprepared("DROP PROCEDURE IF EXISTS ObtenerCorrespondenciaPorFecha");
     }
 };

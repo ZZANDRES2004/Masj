@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Usuario;
 
 class RegistroController extends Controller
@@ -18,7 +17,7 @@ class RegistroController extends Controller
             'SegundoApellido' => 'nullable|string|max:30',
             'NumeroCelular' => 'required|string|max:15',
             'CorreoElectronico' => 'required|string|email|max:40|unique:usuario,CorreoElectronico',
-            'Contrasena' => 'required|string|min:8',
+            'Contraseña' => 'required|string|min:8|',
             'ConjuntoNombre' => 'required|string|max:25',
             'FechaNacimiento' => 'required|date',
             'Estado' => 'required|in:activo,inactivo',
@@ -34,7 +33,7 @@ class RegistroController extends Controller
             'SegundoApellido' => $validated['SegundoApellido'],
             'NumeroCelular' => $validated['NumeroCelular'],
             'CorreoElectronico' => $validated['CorreoElectronico'],
-            'Contrasena' => bcrypt($validated['Contrasena']),
+            'Contraseña' => bcrypt($validated['Contraseña']),
             'ConjuntoNombre' => $validated['ConjuntoNombre'],
             'FechaNacimiento' => $validated['FechaNacimiento'],
             'Estado' => $validated['Estado'],

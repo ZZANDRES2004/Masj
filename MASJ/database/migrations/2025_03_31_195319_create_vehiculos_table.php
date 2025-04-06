@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('MarcaVehiculo', 15)->nullable();
             $table->string('ModeloVehiculo', 25)->nullable();
             $table->integer('idBahia')->index('fk_vehiculos_parqueadero1_idx');
-            $table->integer('idResidente')->nullable()->index('fk_vehiculos_residentes1_idx');
+            $table->integer('idResidente')->unsigned();
             $table->integer('idVisitante')->nullable();
         });
     }

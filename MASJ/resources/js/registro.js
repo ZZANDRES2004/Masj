@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const passwordInput = document.getElementById('Contrasena');
+    const passwordInput = document.getElementById('Contraseña');
     const confirmPasswordInput = document.getElementById('confirmPassword');
     const passwordStrengthDiv = document.getElementById('passwordStrength');
     const passwordMatchDiv = document.getElementById('passwordMatch');

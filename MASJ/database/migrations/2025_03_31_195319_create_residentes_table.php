@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('residentes', function (Blueprint $table) {
-            $table->integer('idResidente')->primary();
+            // Define idResidente como INTEGER UNSIGNED y PRIMARY KEY
+            $table->integer('idResidente')->unsigned()->primary(); 
             $table->integer('idApartamento')->index('fk_residentes_apartamentos');
         });
     }

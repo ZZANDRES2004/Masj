@@ -1,12 +1,17 @@
 <?php
+
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\CustomPasswordResetController;
 
-class Usuario extends Authenticatable
+class Usuario extends Authenticatable 
 {
+
     use HasFactory, Notifiable;
 
     protected $table = 'usuario';
@@ -19,7 +24,7 @@ class Usuario extends Authenticatable
         'SegundoApellido',
         'NumeroCelular',
         'CorreoElectronico',
-        'Contrasena',
+        'Contraseña',
         'ConjuntoNombre',
         'FechaNacimiento',
         'Estado',
@@ -27,21 +32,25 @@ class Usuario extends Authenticatable
         'TipoDocumento',
         'NumDocumento'
     ];
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+
+    public function setContrasenaAttribute($value)
+{
+    $this->attributes['Contrasena'] = Hash::make($value);
+}
+protected $hidden = [
+    'Contraseña', // Correcto
+    'remember_token',
+];
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
     public function getAuthPassword()
     {
-        return $this->Contrasena; // Cambia 'password' por el nombre de tu campo de contraseña
+        return $this->Contrasena; 
     }
     public function getAuthIdentifierName()
     {
-        return 'CorreoElectronico'; // Cambia 'email' por el nombre de tu campo de email
+        return 'CorreoElectronico'; 
     }
     public function getAuthIdentifier()
     {
@@ -52,5 +61,17 @@ class Usuario extends Authenticatable
         return $this->remember_token;
     }
 
-    public $timestamps = false; // Añade esta línea
+     /**
+     * Obtiene la dirección de correo electrónico del usuario para el restablecimiento de contraseña.
+     *
+     * @return string
+     */
+    public function getEmailForPasswordReset()
+    {
+        return $this->CorreoElectronico;
+    }
+
+    public $timestamps = false; 
 }
+
+

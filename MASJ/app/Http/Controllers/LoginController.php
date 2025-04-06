@@ -10,10 +10,10 @@ class LoginController extends Controller
     use ValidatesRequests;
     public function login(Request $request){
         $this->validate($request, [
-            'email' => 'required|email',
+            'CorreoElectronico' => 'required|email', // Cambiar 'email' a 'CorreoElectronico'
             'password' => 'required'
         ]);
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('CorreoElectronico', 'password'); // Cambiar 'email' a 'CorreoElectronico'
         if (\Illuminate\Support\Facades\Auth::attempt($credentials)) {
             return redirect()->intended('home');
         } else {
@@ -22,6 +22,6 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
-        return view('Login'); // Asegúrate que la vista se llame 'login.blade.php'
+        return view('Login');
     }
 }
