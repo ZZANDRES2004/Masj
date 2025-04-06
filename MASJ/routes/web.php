@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistroController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CustomPasswordResetController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/registro', function () {
     return view('registro');
@@ -25,7 +26,7 @@ Route::get('/reset-password/{token}', [CustomPasswordResetController::class, 'sh
     ->name('password.reset');
 Route::post('/reset-password', [CustomPasswordResetController::class, 'resetPassword'])
     ->name('password.update');
-
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/', function () {
     return redirect()->route('Login.form');
 });

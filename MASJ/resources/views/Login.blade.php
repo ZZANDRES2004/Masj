@@ -33,6 +33,7 @@
                 <a class="contraseña" href="{{ route('password.request') }}">Olvidé mi contraseña</a>
 
                 <button type="submit" class="enviar">Iniciar Sesión</button>
+                
             </form>
             @if (session('error'))
             <p class="error">{{ session('error') }}</p>
