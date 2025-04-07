@@ -10,8 +10,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QuejasController;
 use App\Http\Controllers\ZonasComunesController;
 use App\Http\Controllers\CorrespondenciaController; 
-use App\Http\Controllers\VisitantesController;
-
+use App\Http\Controllers\VisitantesUsuController;
+use App\Http\Controllers\VehiculoController;
+use App\Http\Controllers\PaqueteriaController;
+use App\Http\Controllers\VisitanteController;
 
 Route::get('/registro', function () {
     return view('registro');
@@ -56,3 +58,9 @@ Route::middleware(['auth'])->group(function () {
 
 
 Auth::routes(['register' => false, 'reset' => false]); 
+Route::resource('vehiculos', VehiculoController::class);
+Route::resource('paqueterias', PaqueteriaController::class);
+Route::resource('visitantes', VisitanteController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
