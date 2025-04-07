@@ -31,23 +31,27 @@
         {{-- Asegúrate que la ruta 'registro' esté definida como POST en web.php --}}
         <form action="{{ route('registro') }}" method="POST" id="registroForm">
             @csrf
-            <input type="text" name="PrimerNombre" id="name" required value="{{ old('PrimerNombre') }}" autocomplete="off" placeholder="Primer Nombre">
-            {{-- Aquí puedes usar el helper old() para mantener el valor ingresado en caso de error --}}
+            <input type="text" name="PrimerNombre" id="name" required value="{{ old('PrimerNombre') }}" autocomplete="off" placeholder="Primer Nombre" minlength="3" maxlength="10"
+            pattern="[A-Za-z\s]+" title="Solo letras y espacios">
+            
             @error('PrimerNombre')
             <p class="error">{{ $message }}</p>
             @enderror
 
-            <input type="text" name="SegundoNombre" placeholder="Segundo Nombre" value="{{ old('SegundoNombre') }}" autocomplete="off">
+            <input type="text" name="SegundoNombre" placeholder="Segundo Nombre" value="{{ old('SegundoNombre') }}" autocomplete="off" minlength="3"
+            maxlength="10">
             @error('SegundoNombre')
             <p class="error">{{ $message }}</p>
             @enderror
 
-            <input type="text" name="PrimerApellido" placeholder="Primer Apellido" required value="{{ old('PrimerApellido') }}" autocomplete="off">
+            <input type="text" name="PrimerApellido" placeholder="Primer Apellido" required value="{{ old('PrimerApellido') }}" autocomplete="off" placeholder="Primer Nombre" minlength="3" maxlength="10"
+            pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios" >
             @error('PrimerApellido')
             <p class="error">{{ $message }}</p>
             @enderror
 
-            <input type="text" name="SegundoApellido" placeholder="Segundo Apellido" value="{{ old('SegundoApellido') }}" autocomplete="off">
+            <input type="text" name="SegundoApellido" placeholder="Segundo Apellido" value="{{ old('SegundoApellido') }}" autocomplete="off" placeholder="Primer Nombre" minlength="3" maxlength="10"
+            pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios" >
             @error('SegundoApellido')
             <p class="error">{{ $message }}</p>
             @enderror
@@ -73,13 +77,6 @@
                 <p class="error">{{ $message }}</p>
                 @enderror
 
-                <label for="Estado" class="estados">Estado:
-                <select name="Estado" class="edicin-select" required>
-                    <option value="">Selecciona</option>
-                    <option value="activo" {{ old('Estado') == 'activo' ? 'selected' : '' }}>Activo</option>
-                    <option value="inactivo" {{ old('Estado') == 'inactivo' ? 'selected' : '' }}>Inactivo</option>
-                </select>
-                </label>
                 @error('Estado')
                 <p class="error">{{ $message }}</p>
                 @enderror
@@ -89,8 +86,6 @@
                     <option value="">Selecciona</option>
                     <option value="propietario" {{ old('Rol') == 'propietario' ? 'selected' : '' }}>Propietario</option>
                     <option value="arrendatario" {{ old('Rol') == 'arrendatario' ? 'selected' : '' }}>Arrendatario</option>
-                    <option value="guardia" {{ old('Rol') == 'guardia' ? 'selected' : '' }}>Guardia</option>
-                    <option value="administrador" {{ old('Rol') == 'administrador' ? 'selected' : '' }}>Administrador</option>
                 </select>
                 </label>
                 @error('Rol')
@@ -98,12 +93,14 @@
                 @enderror
 
             </div>
-            <input type="number" name="NumDocumento" placeholder="Número de Documento" required value="{{ old('NumDocumento') }}" autocomplete="off">
+            <input type="text" name="NumDocumento" placeholder="Número de Documento" required value="{{ old('NumDocumento') }}"
+            autocomplete="off" minlength="6" maxlength="10" pattern="[0-9]+" title="Solo se permiten números" />
             @error('NumDocumento')
             <p class="error">{{ $message }}</p>
             @enderror
 
-            <input type="text" name="NumeroCelular" placeholder="Número de Celular" required value="{{ old('NumeroCelular') }}" autocomplete="off">
+            <input type="text" name="NumeroCelular" placeholder="Número de Celular" required value="{{ old('NumeroCelular') }}"
+            autocomplete="off" minlength="10" maxlength="10" pattern="[0-9]+" title="Solo se permiten números" />
             @error('NumeroCelular')
             <p class="error">{{ $message }}</p>
             @enderror

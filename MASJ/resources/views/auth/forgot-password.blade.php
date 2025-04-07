@@ -43,7 +43,7 @@
             <form method="POST" action="{{ route('password.email') }}">
     @csrf
     <input type="email" name="CorreoElectronico" placeholder="Correo Electrónico" required>
-    <button type="submit">Enviar enlace</button>
+    <button type="submit" class="enviar">Enviar enlace</button>
 </form>
 
             
