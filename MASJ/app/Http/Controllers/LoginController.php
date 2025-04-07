@@ -18,19 +18,30 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
         
-        // Intenta la autenticación con los campos correctos
         if (Auth::attempt([
             'CorreoElectronico' => $request->email,
             'password' => $request->password
         ])) {
-            return redirect()->route('residente.dashboardR');
+            $usuario = Auth::user();
+
+            switch ($usuario->Rol) {
+                case 'propietario':
+                    return redirect()->route('residente.dashboardR');
+                case 'guardia':
+                    return redirect()->route('guardia.dashboard');
+                case 'administrador':
+                    return redirect()->route('admin.dashboard');
+                default:
+                    Auth::logout();
+                    return redirect()->route('Login.form')->with('error', 'Rol no reconocido');
+            }
         } else {
             return redirect()->back()->with('error', 'Credenciales incorrectas');
         }
     }
-    
+
     public function showLoginForm()
     {
-        return view('Login');
+        return view('Login'); // Asegúrate de tener esta vista creada
     }
-}
+} 

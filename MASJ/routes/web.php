@@ -47,6 +47,7 @@ Route::get('/dashboardR', [DashboardController::class, 'dashboardR'])->middlewar
 Route::get('/zonas-comunes', [ZonasComunesController::class, 'zonasComunes'])->middleware(['auth'])->name('zonas-comunes');
 Route::get('/visitantes', [VisitantesController::class, 'visitantes'])->middleware(['auth'])->name('visitantes');
 Route::get('/correspondencia', [CorrespondenciaController::class, 'correspondencia'])->middleware(['auth'])->name('correspondencia');
+Route::get('/Login', [LoginController::class, 'showLoginForm'])->name('Login.form');
 
 
 
@@ -64,3 +65,7 @@ Route::resource('visitantes', VisitanteController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/guardia', function () {
+    return view('guardia.dashboard');
+})->name('guardia.dashboard');

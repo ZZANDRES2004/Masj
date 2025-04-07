@@ -17,13 +17,43 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
+<style>
+    body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+
+    font-family: "Noto Sans", sans-serif;
+    font-optical-sizing: auto;
+
+    background: linear-gradient(45deg, rgb(91, 13, 163), rgb(170, 24, 92), rgb(117, 6, 99), rgb(91, 13, 163));
+    background-size: 400% 400%;
+    background-attachment: fixed;
+    animation: gradient 15s ease infinite;
+    -webkit-animation: gradient 15s ease infinite;
+    -moz-animation: gradient 15s ease infinite;
+    -o-animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+</style>
+
 <body>
+
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background: linear-gradient(45deg, blueviolet, pink);">
             <div class="container">
 
                 <!-- LOGO / MARCA -->
-                <a class="navbar-brand logo" href="{{ url('/') }}">
+                <a class="navbar-brand logo text-white" href="{{ url('/') }}">
                     MASJ
                 </a>
 
@@ -50,8 +80,8 @@
                             Menú
                             </a>
                         <div class="dropdown-menu dropdown-menu-end bg-dark text-white p-3 rounded shadow" style="min-width: 200px;" aria-labelledby="navbarDropdownMenu">
-                            <a class="dropdown-item text-dark fs-5" href="{{ route('vehiculos.index') }}">🧍‍♂️ mi perfil</a>
-                            <a class="dropdown-item text-dark fs-5" href="#">Cerrar Seccion</a>   
+                            <a class="dropdown-item text-white fs-5" href="{{ route('vehiculos.index') }}">🧍‍♂️ mi perfil</a>
+                            <a class="dropdown-item text-white fs-5" href="#">Cerrar Seccion</a>   
                         </div>
                             </div>
                         </li>
@@ -61,10 +91,10 @@
         </nav>
 
 <!-- Submenú horizontal -->
-<div class="submenu bg-dark-purple text-white py-2">
-    <div class="container d-flex gap-4 justify-content-center">
+<div class="submenu bg-dark-purple text-white py-2" style="background-color:darkmagenta;">
+    <div class="container d-flex gap-4 justify-content-center" style="padding: 20px;">
         <a href="{{ route('vehiculos.index') }}" class="submenu-link text-white text-decoration-none fs-5">🚗 Registro de Vehículos</a>
-        <a href="{{ route('paqueterias.index') }}" class="submenu-link">📦 Registro de Paquetería</a>
+        <a href="{{ route('paqueterias.index') }}" class="submenu-link text-white text-decoration-none fs-5">📦 Registro de Paquetería</a>
 
         <a href="{{route('visitantes.index') }}" class="submenu-link text-white text-decoration-none fs-5">🧍‍♂️ Control de Visitantes</a>
     </div>
