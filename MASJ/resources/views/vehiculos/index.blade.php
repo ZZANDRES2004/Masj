@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style=" float: left; margin-left: 37.5vh;" >
     <h2>🚗 Registro de Vehículos</h2>
-    <a href="{{ route('vehiculos.create') }}" class="btn btn-primary mb-3">➕ Agregar</a>
+    <a href="{{ route('vehiculos.create') }}" class="btn btn-primary mb-3"> ➕Agregar</a>
      </div>
 
         <div class="col-md-12">
@@ -12,10 +12,10 @@
                     ✅ {{ session('success') }}
                 </div>
             @endif
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="width: 60%; margin-left: auto; margin-right: auto;">
         <thead class="table-dark text-center">
             <tr>
-                <th>ID</th>
+                <th >ID</th>
                 <th>Placa</th>
                 <th>Marca</th>
                 <th>Modelo</th>

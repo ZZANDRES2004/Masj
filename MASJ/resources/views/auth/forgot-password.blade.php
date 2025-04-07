@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,6 +31,28 @@
 </head>
 
 <body>
+
+<div class="container">
+    <div class="background"></div>
+    
+    <div class="circles">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    
+    <div class="lines"></div>
+    <div class="neon-ring"></div>
+    <div class="glow"></div>
+    
+    <div class="MASJ">
+      <div class="letter M">M</div>
+      <div class="letter A">A</div>
+      <div class="letter S">S</div>
+      <div class="letter J">J</div>
+    </div>
+  </div>
+
     <div class="contenedor3">
         <div class="formulario">
             <h1 class="ci">Recuperar Contraseña</h1>
@@ -40,12 +63,21 @@
                 </div>
             @endif
             
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul style="margin: 0; padding-left: 20px;">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            
             <form method="POST" action="{{ route('password.email') }}">
-    @csrf
-    <input type="email" name="CorreoElectronico" placeholder="Correo Electrónico" required>
-    <button type="submit" class="enviar">Enviar enlace</button>
-</form>
-
+                @csrf
+                <input type="email" name="CorreoElectronico" placeholder="Correo Electrónico" required>
+                <button type="submit" class="enviar">Enviar enlace</button>
+            </form>
             
             <div class="volver-login">
                 <a href="{{ route('Login.form') }}" class="contraseña">Volver al inicio de sesión</a>
@@ -53,4 +85,3 @@
         </div>
     </div>
 </body>
-</html>

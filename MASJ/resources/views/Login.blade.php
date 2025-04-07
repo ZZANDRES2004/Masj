@@ -15,6 +15,28 @@
 </head>
 
 <body>
+
+<div class="container">
+    <div class="background"></div>
+    
+    <div class="circles">
+      <div class="circle"></div>
+      <div class="circle"></div>
+      <div class="circle"></div>
+    </div>
+    
+    <div class="lines"></div>
+    <div class="neon-ring"></div>
+    <div class="glow"></div>
+    
+    <div class="MASJ">
+      <div class="letter M">M</div>
+      <div class="letter A">A</div>
+      <div class="letter S">S</div>
+      <div class="letter J">J</div>
+    </div>
+  </div>
+
     <div class="contenedor">
         <div class="formulario">
             <h1 class="ci">Iniciar Sesión</h1>
