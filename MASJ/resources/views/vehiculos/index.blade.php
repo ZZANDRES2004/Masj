@@ -4,7 +4,14 @@
 <div class="container">
     <h2>🚗 Registro de Vehículos</h2>
     <a href="{{ route('vehiculos.create') }}" class="btn btn-primary mb-3">➕ Agregar</a>
+     </div>
 
+        <div class="col-md-12">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    ✅ {{ session('success') }}
+                </div>
+            @endif
     <table class="table table-bordered">
         <thead class="table-dark text-center">
             <tr>
