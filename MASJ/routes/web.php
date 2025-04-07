@@ -7,6 +7,7 @@ use App\Http\Controllers\RegistroController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CustomPasswordResetController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Queja;
 
 Route::get('/registro', function () {
     return view('registro');
@@ -36,18 +37,9 @@ Route::get('/residente/dashboard', function () {
     return view('residente.dashboardR');
 })->name('residente.dashboardR');
 
-// Rutas para quejas
-Route::resource('quejas', QuejasController::class);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-// Rutas para zonas comunes
-Route::resource('zonas-comunes', ZonasComunesController::class);
-
-// Rutas para visitantes
-Route::resource('visitantes', VisitantesController::class);
-
-// Rutas para correspondencia
-Route::resource('correspondencia', CorrespondenciaController::class);
-
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 
 Auth::routes(['register' => false, 'reset' => false]); 

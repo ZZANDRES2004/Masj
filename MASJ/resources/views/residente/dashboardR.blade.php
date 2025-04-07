@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestión Residencial</title>
-    <link rel="stylesheet" href="{{ asset('css/residente.css') }}">
+    <link rel="stylesheet" href="{{ asset('../resources/css/residente/residente.css') }}">
 </head>
 <body>
      <!-- ENCABEZADO -->
@@ -65,19 +65,19 @@
                     <div class="dashboard-stats">
                         <div class="stat-card">
                             <h3>Quejas</h3>
-                            <div class="stat-value">{{ $quejas }}</div>
+                            <div class="stat-value">{{ $quejas ?? 0 }}</div>
                         </div>
                         <div class="stat-card">
                             <h3>Reservas</h3>
-                            <div class="stat-value">{{ $reservas }}</div>
+                            <div class="stat-value">{{ $reservas ?? 0 }}</div>
                         </div>
                         <div class="stat-card">
                             <h3>Visitantes</h3>
-                            <div class="stat-value">{{ $visitantes }}</div>
+                            <div class="stat-value">{{ $visitantes ?? 0}}</div>
                         </div>
                         <div class="stat-card">
                             <h3>Correspondencia</h3>
-                            <div class="stat-value">{{ $correspondencia }}</div>
+                            <div class="stat-value">{{ $correspondencia ?? 0 }}</div>
                         </div>
                     </div>
                 </div>
