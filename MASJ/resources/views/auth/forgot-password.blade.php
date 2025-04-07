@@ -40,16 +40,12 @@
                 </div>
             @endif
             
-            <form action="{{ route('password.email') }}" method="POST">
-                @csrf
-                <input type="email" name="CorreoElectronico" id="CorreoElectronico" placeholder="Correo Electrónico" required>
-                
-                @error('CorreoElectronico')
-                    <p class="error">{{ $message }}</p>
-                @enderror
-                
-                <button type="submit" class="enviar">Enviar enlace de recuperación</button>
-            </form>
+            <form method="POST" action="{{ route('password.email') }}">
+    @csrf
+    <input type="email" name="CorreoElectronico" placeholder="Correo Electrónico" required>
+    <button type="submit">Enviar enlace</button>
+</form>
+
             
             <div class="volver-login">
                 <a href="{{ route('Login.form') }}" class="contraseña">Volver al inicio de sesión</a>

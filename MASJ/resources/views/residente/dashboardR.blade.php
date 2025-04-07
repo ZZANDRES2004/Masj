@@ -23,7 +23,7 @@
             <div class="logo">MASJ</div>
             <div class="user-menu">
                 <div class="user-info" id="user-dropdown-toggle">
-                    <img src="{{ asset('usuario.png') }}" class="user-avatar" alt="Avatar">
+                    <img src="{{ asset('imagenes/usuario.png') }}" class="user-avatar" alt="Avatar">
                     <span class="user-name">{{ Auth::user()->PrimerNombre }} {{ Auth::user()->PrimerApellido }}</span>
                     <span class="user-role">Residente</span>
                     <span class="dropdown-icon">▼</span>

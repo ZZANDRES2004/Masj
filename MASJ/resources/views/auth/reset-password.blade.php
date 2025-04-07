@@ -18,26 +18,15 @@
         <div class="formulario">
             <h1 class="ci">Restablecer Contraseña</h1>
             
-            <form action="{{ route('password.update') }}" method="POST">
-                @csrf
-                <input type="hidden" name="token" value="{{ $token }}">
-                
-                <input type="email" name="email" id="CorreoElectronico" placeholder="Correo Electrónico" required>
-                
-                @error('email')
-                    <p class="error">{{ $message }}</p>
-                @enderror
-                
-                <input type="password" name="Contraseña" id="Contraseña" placeholder="Nueva Contraseña" required>
-                
-                @error('password')
-                    <p class="error">{{ $message }}</p>
-                @enderror
-                
-                <input type="password" name="password_confirmation" id="ConfirmarContrasena" placeholder="Confirmar Contraseña" required>
+            <form method="POST" action="{{ route('password.update') }}">
+    @csrf
+    <input type="hidden" name="token" value="{{ $token }}">
+    <input type="hidden" name="email" value="{{ request()->query('email') }}">
+    <input type="password" name="password" placeholder="Nueva contraseña" required>
+    <input type="password" name="password_confirmation" placeholder="Confirmar contraseña" required>
+    <button type="submit">Restablecer contraseña</button>
+</form>
 
-                <button type="submit" class="enviar">Restablecer Contraseña</button>
-            </form>
         </div>
     </div>
 </body>
