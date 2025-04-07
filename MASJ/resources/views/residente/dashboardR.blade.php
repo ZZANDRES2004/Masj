@@ -54,7 +54,6 @@
                     <li><a href="{{ route('zonas-comunes') }}" class="nav-link" data-section="zonas-comunes">Zonas Comunes</a></li>
                     <li><a href="{{ route('visitantes.index') }}" class="nav-link" data-section="visitantes">Visitantes</a></li>
                     <li><a href="{{ route('correspondencia') }}" class="nav-link" data-section="correspondencia">Correspondencia</a></li>
-                </ul>
             </div>
         </div>
     </nav>
