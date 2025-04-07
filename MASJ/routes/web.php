@@ -11,6 +11,7 @@ use App\Http\Controllers\CorrespondenciaController;
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\PaqueteriaController;
 use App\Http\Controllers\VisitanteController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', fn() => redirect()->route('Login.form'));
 
@@ -46,3 +47,10 @@ Route::middleware(['auth'])->group(function () {
 // Recursos
 Route::resource('vehiculos', VehiculoController::class);
 Route::resource('paqueterias', PaqueteriaController::class);
+
+
+
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect()->route('Login.form');
+})->name('logout');
