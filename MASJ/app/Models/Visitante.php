@@ -11,12 +11,24 @@ class Visitante extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'Nombres_visitante', 'ApellidosVisitante', 'TipoDocumento',
-        'NumDocumento', 'idGuardia', 'apartamento', 'hora_entrada', 'hora_salida'
+        'NombresVisitante',
+        'ApellidosVisitante',
+        'TipoDocumento',
+        'NumDocumento',
+        'apartamento',
+        'hora_entrada',
+        'hora_salida',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'idVisitante';
+    }
 
     public function vehiculos()
     {
         return $this->hasMany(Vehiculo::class, 'idVisitante');
     }
 }
+
+

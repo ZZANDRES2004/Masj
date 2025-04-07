@@ -4,10 +4,10 @@
 <div class="container">
     <h2>➕ Registrar Visitante</h2>
 
-    @if($errors->any())
-        <div class="alert alert-danger small">
+    @if ($errors->any())
+        <div class="alert alert-danger">
             <ul class="mb-0">
-                @foreach($errors->all() as $error)
+                @foreach ($errors->all() as $error)
                     <li>⚠️ {{ $error }}</li>
                 @endforeach
             </ul>
@@ -18,31 +18,46 @@
         @csrf
 
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" name="nombre" class="form-control" maxlength="255" value="{{ old('nombre') }}" required>
+            <label for="NombresVisitante" class="form-label">Nombres</label>
+            <input type="text" name="NombresVisitante" class="form-control" required>
         </div>
 
         <div class="mb-3">
-            <label for="documento" class="form-label">Documento</label>
-            <input type="text" name="documento" class="form-control" maxlength="50" value="{{ old('documento') }}" required>
+            <label for="ApellidosVisitante" class="form-label">Apellidos</label>
+            <input type="text" name="ApellidosVisitante" class="form-control" required>
         </div>
 
         <div class="mb-3">
-            <label for="apartamento" class="form-label">Apartamento que visitas</label>
-            <input type="text" name="apartamento" class="form-control" maxlength="255" value="{{ old('apartamento') }}" required>
+            <label for="TipoDocumento" class="form-label">Tipo de Documento</label>
+            <select name="TipoDocumento" class="form-select" required>
+                <option value="CC">Cédula</option>
+                <option value="TI">Tarjeta de Identidad</option>
+                <option value="CE">Cédula de Extranjería</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="NumDocumento" class="form-label">Número de Documento</label>
+            <input type="text" name="NumDocumento" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="apartamento" class="form-label">Apartamento</label>
+            <input type="text" name="apartamento" class="form-control" required>
         </div>
 
         <div class="mb-3">
             <label for="hora_entrada" class="form-label">Hora de Entrada</label>
-            <input type="time" name="hora_entrada" class="form-control" value="{{ old('hora_entrada') }}">
+            <input type="time" name="hora_entrada" class="form-control">
         </div>
 
         <div class="mb-3">
             <label for="hora_salida" class="form-label">Hora de Salida</label>
-            <input type="time" name="hora_salida" class="form-control" value="{{ old('hora_salida') }}">
+            <input type="time" name="hora_salida" class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-primary">✅ Guardar</button>
+        <button type="submit" class="btn btn-primary">✅ Registrar</button>
+        <a href="{{ route('visitantes.index') }}" class="btn btn-secondary">🔙 Volver</a>
     </form>
 </div>
 @endsection

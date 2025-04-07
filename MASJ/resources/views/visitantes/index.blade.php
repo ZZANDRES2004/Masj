@@ -9,24 +9,33 @@
         </div>
 
         <div class="col-md-12">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    ✅ {{ session('success') }}
+                </div>
+            @endif
+
             <table class="table table-bordered">
-                <thead class="table-dark">
-                    <tr class="text-center">
+                <thead class="table-dark text-center">
+                    <tr>
                         <th>ID</th>
                         <th>Nombre Completo</th>
-                        <th>Tipo y Documento</th>
+                        <th>Tipo Doc</th>
+                        <th>Número</th>
                         <th>Apartamento</th>
                         <th>Hora Entrada</th>
                         <th>Hora Salida</th>
                         <th style="width: 20%;">Opciones</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     @foreach($visitantes as $visitante)
                     <tr class="text-center">
                         <td>{{ $visitante->idVisitante }}</td>
                         <td>{{ $visitante->NombresVisitante }} {{ $visitante->ApellidosVisitante }}</td>
-                        <td>{{ $visitante->TipoDocumento }} {{ $visitante->NumDocumento }}</td>
+                        <td>{{ $visitante->TipoDocumento }}</td>
+                        <td>{{ $visitante->NumDocumento }}</td>
                         <td>{{ $visitante->apartamento }}</td>
                         <td>{{ $visitante->hora_entrada }}</td>
                         <td>{{ $visitante->hora_salida }}</td>
