@@ -13,8 +13,8 @@
                 <thead class="table-dark">
                     <tr class="text-center">
                         <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Documento</th>
+                        <th>Nombre Completo</th>
+                        <th>Tipo y Documento</th>
                         <th>Apartamento</th>
                         <th>Hora Entrada</th>
                         <th>Hora Salida</th>
@@ -24,15 +24,15 @@
                 <tbody>
                     @foreach($visitantes as $visitante)
                     <tr class="text-center">
-                        <td>{{ $visitante->id }}</td>
-                        <td>{{ $visitante->nombre }}</td>
-                        <td>{{ $visitante->documento }}</td>
+                        <td>{{ $visitante->idVisitante }}</td>
+                        <td>{{ $visitante->NombresVisitante }} {{ $visitante->ApellidosVisitante }}</td>
+                        <td>{{ $visitante->TipoDocumento }} {{ $visitante->NumDocumento }}</td>
                         <td>{{ $visitante->apartamento }}</td>
                         <td>{{ $visitante->hora_entrada }}</td>
                         <td>{{ $visitante->hora_salida }}</td>
                         <td>
-                            <a href="{{ route('visitantes.edit', $visitante->id) }}" class="btn btn-success btn-sm">✏️ Editar</a>
-                            <form action="{{ route('visitantes.destroy', $visitante->id) }}" method="POST" style="display:inline-block;">
+                            <a href="{{ route('visitantes.edit', $visitante->idVisitante) }}" class="btn btn-success btn-sm">✏️ Editar</a>
+                            <form action="{{ route('visitantes.destroy', $visitante->idVisitante) }}" method="POST" style="display:inline-block;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar este visitante?')">🗑️ Eliminar</button>

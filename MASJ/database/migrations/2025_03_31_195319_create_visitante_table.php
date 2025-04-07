@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('visitante', function (Blueprint $table) {
-            $table->integer('idVisitante')->primary();
-            $table->string('NombresVisitante', 40);
-            $table->string('ApellidosVisitante', 40);
-            $table->string('TipoDocumento', 10);
-            $table->integer('NumDocumento');
-            $table->integer('idResidente')->unsigned();
-            $table->integer('idGuardia');
-            $table->string('apartamento'); // <- nombre actualizado
+            $table->increments('idVisitante');
+            $table->string('NombresVisitante', 40)->nullable(); // <- Ahora opcional
+            $table->string('ApellidosVisitante', 40)->nullable();
+            $table->string('TipoDocumento', 10)->nullable();
+            $table->integer('NumDocumento')->nullable();
+            $table->integer('idResidente')->unsigned()->nullable();
+            $table->integer('idGuardia')->nullable();
+            $table->string('apartamento');
             $table->time('hora_entrada')->nullable();
-            $table->time('hora_salida')->nullable(); // <- no obligatoria
+            $table->time('hora_salida')->nullable();
         });
     }
 

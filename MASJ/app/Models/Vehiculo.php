@@ -2,24 +2,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Vehiculo extends Model
 {
-    protected $table = 'vehiculos';
-    protected $primaryKey = 'idVehiculo';
+    use HasFactory;
     public $timestamps = false;
+
+    protected $table = 'vehiculos';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'PlacaVehiculo',
         'MarcaVehiculo',
         'ModeloVehiculo',
-        'idBahia',
-        'idResidente',
-        'idVisitante',
         'hora_ingreso',
         'hora_salida',
-        'valor_pagado'
+        'valor_pagado',
+        'idBahia',
     ];
 
     public function parqueadero()

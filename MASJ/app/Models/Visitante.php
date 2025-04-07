@@ -6,13 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Visitante extends Model
 {
+    protected $table = 'visitante';
+    protected $primaryKey = 'idVisitante';
     public $timestamps = false;
 
     protected $fillable = [
-        'nombre',
-        'documento',
-        'apartamento',
-        'hora_entrada',
-        'hora_salida'
+        'Nombres_visitante', 'ApellidosVisitante', 'TipoDocumento',
+        'NumDocumento', 'idGuardia', 'apartamento', 'hora_entrada', 'hora_salida'
     ];
+
+    public function vehiculos()
+    {
+        return $this->hasMany(Vehiculo::class, 'idVisitante');
+    }
 }

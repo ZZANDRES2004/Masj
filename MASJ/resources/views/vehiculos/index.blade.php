@@ -28,8 +28,14 @@
                 <td>{{ $vehiculo->ModeloVehiculo }}</td>
                 <td>{{ $vehiculo->parqueadero->idBahia ?? 'N/A' }}</td>
                 <td>{{ $vehiculo->hora_ingreso }}</td>
-                <td>{{ $vehiculo->hora_salida }}</td>
-                <td>${{ $vehiculo->valor_pagado }}</td>
+                <td>{{ $vehiculo->hora_salida ?? '—' }}</td>
+                <td>
+                    @if($vehiculo->valor_pagado)
+                        ${{ $vehiculo->valor_pagado }}
+                    @else
+                        —
+                    @endif
+                </td>
                 <td>
                     <a href="{{ route('vehiculos.edit', $vehiculo->idVehiculo) }}" class="btn btn-sm btn-success">✏️ Editar</a>
                     <form action="{{ route('vehiculos.destroy', $vehiculo->idVehiculo) }}" method="POST" style="display:inline-block;">
@@ -43,3 +49,5 @@
     </table>
 </div>
 @endsection
+
+

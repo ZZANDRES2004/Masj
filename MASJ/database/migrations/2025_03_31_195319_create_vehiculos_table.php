@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('MarcaVehiculo', 15)->nullable();
             $table->string('ModeloVehiculo', 25)->nullable();
             $table->integer('idBahia');
-            $table->integer('idResidente')->unsigned();
+            $table->integer('idResidente')->unsigned()->nullable(); // ✅ Cambiado a nullable
             $table->integer('idVisitante')->nullable();
             $table->timestamp('hora_ingreso')->nullable();
             $table->timestamp('hora_salida')->nullable();
