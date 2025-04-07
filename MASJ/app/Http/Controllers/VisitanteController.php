@@ -21,8 +21,10 @@ class VisitanteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'documento' => 'required|string|max:50',
+            'NombresVisitante' => 'required|string|max:255',
+            'ApellidosVisitante' => 'required|string|max:255',
+            'TipoDocumento' => 'required|string|max:50',
+            'NumDocumento' => 'required|string|max:50',
             'apartamento' => 'required|string|max:255',
             'hora_entrada' => 'nullable',
             'hora_salida' => 'nullable',
@@ -34,33 +36,36 @@ class VisitanteController extends Controller
         return redirect()->route('visitantes.index')->with('success', 'Visitante registrado exitosamente');
     }
 
-    public function edit($id)
+    public function edit($idVisitante)
     {
-        $visitante = Visitante::findOrFail($id);
+        $visitante = Visitante::findOrFail($idVisitante);
         return view('visitantes.edit', compact('visitante'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $idVisitante)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255',
-            'documento' => 'required|string|max:50',
+            'NombresVisitante' => 'required|string|max:255',
+            'ApellidosVisitante' => 'required|string|max:255',
+            'TipoDocumento' => 'required|string|max:50',
+            'NumDocumento' => 'required|string|max:50',
             'apartamento' => 'required|string|max:255',
             'hora_entrada' => 'nullable',
             'hora_salida' => 'nullable',
         ]);
 
-        $visitante = Visitante::findOrFail($id);
+        $visitante = Visitante::findOrFail($idVisitante);
         $visitante->update($request->all());
 
         return redirect()->route('visitantes.index')->with('success', 'Visitante actualizado.');
     }
 
-    public function destroy($id)
+    public function destroy($idVisitante)
     {
-        $visitante = Visitante::findOrFail($id);
+        $visitante = Visitante::findOrFail($idVisitante);
         $visitante->delete();
         return redirect()->route('visitantes.index')->with('success', 'Visitante eliminado.');
     }
 }
+
 

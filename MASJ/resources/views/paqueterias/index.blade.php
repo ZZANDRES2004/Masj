@@ -9,6 +9,12 @@
         </div>
 
         <div class="col-md-12">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    ✅ {{ session('success') }}
+                </div>
+            @endif
+        <div class="col-md-12">
             <table class="table table-bordered">
                 <thead class="table-dark">
                     <tr class="text-center">

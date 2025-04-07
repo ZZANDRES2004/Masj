@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Vehiculo;
 use App\Models\Parqueadero;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class VehiculoController extends Controller
 {
@@ -22,25 +23,25 @@ class VehiculoController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'PlacaVehiculo' => 'required|string|max:10',
-            'MarcaVehiculo' => 'required|string|max:50',
-            'ModeloVehiculo' => 'required|string|max:50',
-            'idBahia' => 'required|exists:parqueadero,idBahia',
-        ]);
+        $vehiculo = new Vehiculo();
+        $vehiculo->PlacaVehiculo = $request->PlacaVehiculo;
+        $vehiculo->MarcaVehiculo = $request->MarcaVehiculo;
+        $vehiculo->ModeloVehiculo = $request->ModeloVehiculo;
+        $vehiculo->idBahia = $request->idBahia;
+        $vehiculo->hora_ingreso = $request->hora_ingreso;
+        $vehiculo->hora_salida = $request->hora_salida;
 
-        $data = $request->all();
-
-        if ($request->filled(['hora_ingreso', 'hora_salida'])) {
-            $ingreso = strtotime($request->hora_ingreso);
-            $salida = strtotime($request->hora_salida);
-            $horas = ceil(($salida - $ingreso) / 3600);
-            $data['valor_pagado'] = $horas * 1000;
+        // Calcular valor pagado si hay hora de salida
+        if ($request->hora_ingreso && $request->hora_salida) {
+            $inicio = Carbon::parse($request->hora_ingreso);
+            $fin = Carbon::parse($request->hora_salida);
+            $horas = ceil($inicio->diffInMinutes($fin) / 60);
+            $vehiculo->valor_pagado = $horas * 1000;
         }
 
-        Vehiculo::create($data);
+        $vehiculo->save();
 
-        return redirect()->route('vehiculos.index')->with('success', 'Vehículo registrado correctamente.');
+        return redirect()->route('vehiculos.index')->with('success', 'Vehículo registrado correctamente');
     }
 
     public function edit($id)
@@ -52,22 +53,29 @@ class VehiculoController extends Controller
     public function update(Request $request, $id)
     {
         $vehiculo = Vehiculo::findOrFail($id);
-        $data = $request->all();
+        $vehiculo->PlacaVehiculo = $request->PlacaVehiculo;
+        $vehiculo->MarcaVehiculo = $request->MarcaVehiculo;
+        $vehiculo->ModeloVehiculo = $request->ModeloVehiculo;
+        $vehiculo->hora_ingreso = $request->hora_ingreso;
+        $vehiculo->hora_salida = $request->hora_salida;
 
-        if ($request->filled(['hora_ingreso', 'hora_salida'])) {
-            $ingreso = strtotime($request->hora_ingreso);
-            $salida = strtotime($request->hora_salida);
-            $horas = ceil(($salida - $ingreso) / 3600);
-            $data['valor_pagado'] = $horas * 1000;
+        if ($request->hora_ingreso && $request->hora_salida) {
+            $inicio = Carbon::parse($request->hora_ingreso);
+            $fin = Carbon::parse($request->hora_salida);
+            $horas = ceil($inicio->diffInMinutes($fin) / 60);
+            $vehiculo->valor_pagado = $horas * 1000;
+        } else {
+            $vehiculo->valor_pagado = null;
         }
 
-        $vehiculo->update($data);
-        return redirect()->route('vehiculos.index')->with('success', 'Vehículo actualizado.');
+        $vehiculo->save();
+
+        return redirect()->route('vehiculos.index')->with('success', 'Vehículo actualizado correctamente');
     }
 
     public function destroy($id)
     {
-        Vehiculo::destroy($id);
-        return redirect()->route('vehiculos.index')->with('success', 'Vehículo eliminado.');
+        Vehiculo::findOrFail($id)->delete();
+        return redirect()->route('vehiculos.index')->with('success', 'Vehículo eliminado correctamente');
     }
 }

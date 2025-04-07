@@ -48,6 +48,9 @@ Route::middleware(['auth'])->group(function () {
 Route::resource('vehiculos', VehiculoController::class);
 Route::resource('paqueterias', PaqueteriaController::class);
 
+//Visitante 
+Route::resource('visitantes', VisitanteController::class);
+
 
 
 Route::post('/logout', function () {

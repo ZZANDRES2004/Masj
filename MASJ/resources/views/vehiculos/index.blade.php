@@ -4,7 +4,14 @@
 <div class="container">
     <h2>🚗 Registro de Vehículos</h2>
     <a href="{{ route('vehiculos.create') }}" class="btn btn-primary mb-3">➕ Agregar</a>
+     </div>
 
+        <div class="col-md-12">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    ✅ {{ session('success') }}
+                </div>
+            @endif
     <table class="table table-bordered">
         <thead class="table-dark text-center">
             <tr>
@@ -28,8 +35,14 @@
                 <td>{{ $vehiculo->ModeloVehiculo }}</td>
                 <td>{{ $vehiculo->parqueadero->idBahia ?? 'N/A' }}</td>
                 <td>{{ $vehiculo->hora_ingreso }}</td>
-                <td>{{ $vehiculo->hora_salida }}</td>
-                <td>${{ $vehiculo->valor_pagado }}</td>
+                <td>{{ $vehiculo->hora_salida ?? '—' }}</td>
+                <td>
+                    @if($vehiculo->valor_pagado)
+                        ${{ $vehiculo->valor_pagado }}
+                    @else
+                        —
+                    @endif
+                </td>
                 <td>
                     <a href="{{ route('vehiculos.edit', $vehiculo->idVehiculo) }}" class="btn btn-sm btn-success">✏️ Editar</a>
                     <form action="{{ route('vehiculos.destroy', $vehiculo->idVehiculo) }}" method="POST" style="display:inline-block;">
@@ -43,3 +56,5 @@
     </table>
 </div>
 @endsection
+
+

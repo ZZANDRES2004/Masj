@@ -7,24 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 class Vehiculo extends Model
 {
     protected $table = 'vehiculos';
-    protected $primaryKey = 'idVehiculo';
+    protected $primaryKey = 'idVehiculo'; // Asegúrate de usar el nombre correcto de tu PK
     public $timestamps = false;
 
     protected $fillable = [
-        'PlacaVehiculo',
-        'MarcaVehiculo',
-        'ModeloVehiculo',
-        'idBahia',
-        'idResidente',
-        'idVisitante',
-        'hora_ingreso',
-        'hora_salida',
-        'valor_pagado'
+        'Placa',
+        'Marca',
+        'Tipo',
+        'Color',
+        'idParqueadero',
+        'idVisitante', // solo si tu modelo lo relaciona
     ];
 
+    // Relación con Parqueadero
     public function parqueadero()
     {
-        return $this->belongsTo(Parqueadero::class, 'idBahia');
+        return $this->belongsTo(Parqueadero::class, 'idParqueadero');
+    }
+
+    // (Opcional) Relación con Visitante si aplica
+    public function visitante()
+    {
+        return $this->belongsTo(Visitante::class, 'idVisitante');
     }
 }
 
