@@ -53,9 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         // Abrir la URL correspondiente a la sección
-        xhr.open('GET', `${section}.php`, true);
+        xhr.open('GET', `/${section}`, true);
         xhr.send();
     }
+    
 
     // Asignar evento de clic a los enlaces de navegación
     navLinks.forEach(link => {

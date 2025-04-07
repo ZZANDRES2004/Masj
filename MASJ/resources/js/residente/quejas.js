@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
         link.addEventListener('click', function (event) {
             event.preventDefault();
 
-            fetch('quejas.php')
+            fetch('/quejas')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('content-panel').innerHTML = data;

@@ -5,7 +5,6 @@ $reservas = [
     ['fecha' => '2024-03-10', 'zona' => 'Salón Comunal', 'estado' => 'Pendiente']
 ];
 ?>
-
 <div class="form-card" id="reservas-section">
     <h3 class="form-title">Reserva de Zonas Comunes</h3>
 
@@ -54,4 +53,6 @@ $reservas = [
         </div>
     </form>
 </div>
+
+
 

@@ -7,7 +7,11 @@ use App\Http\Controllers\RegistroController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CustomPasswordResetController;
 use App\Http\Controllers\DashboardController;
-use App\Models\Queja;
+use App\Http\Controllers\QuejasController;
+use App\Http\Controllers\ZonasComunesController;
+use App\Http\Controllers\CorrespondenciaController; 
+use App\Http\Controllers\VisitantesController;
+
 
 Route::get('/registro', function () {
     return view('registro');
@@ -32,14 +36,23 @@ Route::get('/', function () {
     return redirect()->route('Login.form');
 });
 
-
 Route::get('/residente/dashboard', function () {
     return view('residente.dashboardR');
 })->name('residente.dashboardR');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboardR', [DashboardController::class, 'dashboardR'])->middleware(['auth'])->name('dashboardR');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/zonas-comunes', [ZonasComunesController::class, 'zonasComunes'])->middleware(['auth'])->name('zonas-comunes');
+Route::get('/visitantes', [VisitantesController::class, 'visitantes'])->middleware(['auth'])->name('visitantes');
+Route::get('/correspondencia', [CorrespondenciaController::class, 'correspondencia'])->middleware(['auth'])->name('correspondencia');
+
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/quejas', [QuejasController::class, 'index'])->name('quejas.index');
+    Route::post('/quejas', [QuejasController::class, 'store'])->name('quejas.store');
+});
 
 
 Auth::routes(['register' => false, 'reset' => false]); 

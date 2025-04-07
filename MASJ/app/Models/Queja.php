@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Queja extends Model
 {
     use HasFactory;
-    
-    protected $table = 'quejas';
-    protected $fillable = ['titulo', 'descripcion', 'estado', 'apartamento_id'];
+
+    protected $fillable = [
+        'idResidente',
+        'MotivoQueja',
+        'EstadoQueja',
+    ];
 }
+
+

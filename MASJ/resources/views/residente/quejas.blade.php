@@ -1,44 +1,31 @@
-<?php
-$quejas = [
-    ['fecha' => '2023-10-26', 'descripcion' => 'Ruido excesivo por la noche.', 'estado' => 'En proceso'],
-    ['fecha' => '2023-10-20', 'descripcion' => 'Problemas con el ascensor.', 'estado' => 'Finalizado'],
-    ['fecha' => '2023-10-15', 'descripcion' => 'Falta de limpieza en áreas comunes.', 'estado' => 'En proceso']
-];
-?>
+@extends('layouts.app') {{-- Usa tu layout base si tienes uno --}}
 
-<div class="form-card" id="quejas-section">
-    <h3 class="form-title">Registro de Quejas</h3>
+@section('content')
+<div class="container">
+    <h2>Quejas</h2>
 
-    <div id="quejas-anteriores">
-        <h4>Mis Quejas Anteriores:</h4>
-        <br>
-        <div id="lista-quejas">
-            <?php foreach ($quejas as $queja): ?>
-                <div>
-                    <br>
-                    <p><strong>Fecha:</strong> <?= $queja['fecha']; ?></p>
-                    <br>
-                    <p><strong>Descripción:</strong> <?= $queja['descripcion']; ?></p>
-                    <br>
-                    <p><strong>Estado:</strong> <?= $queja['estado']; ?></p>
-                    <br>
-                    <hr>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-    <br>
-
-    <button id="nueva-queja-btn" class="btn btn-primary">Nueva queja</button>
-
-    <form id="nueva-queja-form" style="display: none;" action="php/procesar_queja.php" method="POST">
+    <form action="{{ route('quejas.store') }}" method="POST">
+        @csrf
         <div class="form-group">
-            <label for="nueva-queja-descripcion">Descripción de la queja</label>
-            <textarea class="form-control" id="nueva-queja-descripcion" name="descripcion" placeholder="Describe tu queja aquí"></textarea>
+            <label for="descripcion">Descripción de la queja:</label>
+            <textarea name="descripcion" id="descripcion" class="form-control" required></textarea>
         </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Enviar Queja</button>
-            <button type="button" id="cancelar-queja-btn" class="btn btn-secondary">Cancelar</button>
-        </div>
+        <button type="submit" class="btn btn-primary mt-2">Enviar Queja</button>
     </form>
+
+    <hr>
+
+    <h4>Historial de quejas</h4>
+    @if(count($quejas) > 0)
+        @foreach ($quejas as $queja)
+            <div class="mb-4 p-3 border rounded">
+                <p><strong>Fecha:</strong> {{ $queja->created_at->format('Y-m-d') }}</p>
+                <p><strong>Descripción:</strong> {{ $queja->descripcion }}</p>
+                <p><strong>Estado:</strong> {{ $queja->estado }}</p>
+            </div>
+        @endforeach
+    @else
+        <p>No hay quejas registradas.</p>
+    @endif
 </div>
+@endsection

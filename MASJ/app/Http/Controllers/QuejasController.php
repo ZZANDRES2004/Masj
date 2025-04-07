@@ -13,12 +13,7 @@ class QuejasController extends Controller
      */
     public function index()
     {
-        $usuario = Auth::user();
-        $quejas = Queja::where('apartamento_id', $usuario->apartamento_id)
-                      ->orderBy('created_at', 'desc')
-                      ->get();
-        
-        return view('quejas.index', compact('quejas'));
+        return view('residente.quejas');
     }
 
     /**

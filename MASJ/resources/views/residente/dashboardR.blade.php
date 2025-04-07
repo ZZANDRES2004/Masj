@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestión Residencial</title>
     <link rel="stylesheet" href="{{ asset('../resources/css/residente/residente.css') }}">
+    <script src="{{ asset('js/residente/quejas.js') }}"></script>
 </head>
 <body>
      <!-- ENCABEZADO -->
@@ -21,6 +22,8 @@
     <div class="user-menu">
     <div class="user-info" id="user-dropdown-toggle">
         <img src="{{ asset('usuario.png') }}" class="user-avatar" alt="Avatar">
+        <span class="user-name">{{ Auth::user()->PrimerNombre }} {{ Auth::user()->PrimerApellido }}</span>
+        <span class="user-role">Residente</span>
         <span class="dropdown-icon">▼</span>
     </div>
     <div class="dropdown-menu" id="user-dropdown-menu">
@@ -46,9 +49,9 @@
                 <ul class="nav-links">
                     <li><a href="{{ route('dashboard') }}" class="nav-link active" data-section="dashboard">Inicio</a></li>
                     <li><a href="{{ route('quejas.index') }}" class="nav-link" data-section="quejas">Quejas</a></li>
-                    <li><a href="{{ route('zonas-comunes.index') }}" class="nav-link" data-section="zonas-comunes">Zonas Comunes</a></li>
-                    <li><a href="{{ route('visitantes.index') }}" class="nav-link" data-section="visitantes">Visitantes</a></li>
-                    <li><a href="{{ route('correspondencia.index') }}" class="nav-link" data-section="correspondencia">Correspondencia</a></li>
+                    <li><a href="{{ route('zonas-comunes') }}" class="nav-link" data-section="zonas-comunes">Zonas Comunes</a></li>
+                    <li><a href="{{ route('visitantes') }}" class="nav-link" data-section="visitantes">Visitantes</a></li>
+                    <li><a href="{{ route('correspondencia') }}" class="nav-link" data-section="correspondencia">Correspondencia</a></li>
                 </ul>
             </div>
         </div>
@@ -84,12 +87,13 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/perfil.js') }}"></script>
-    <script src="{{ asset('js/residente.js') }}"></script>
-    <script src="{{ asset('js/quejas.js') }}"></script>
-    <script src="{{ asset('js/zonas.js') }}"></script>
-    <script src="{{ asset('js/visitantes.js') }}"></script>
-    <script src="{{ asset('js/correspondencia.js') }}"></script>
+    
+    <script src="{{ asset('../resources/js/residente/perfil.js') }}"></script>
+    <script src="{{ asset('../resources/js/residente/residente.js') }}"></script>
+    <script src="{{ asset('../resources/js/residente/quejas.js') }}"></script>
+    <script src="{{ asset('../resources/js/residente/zonas.js') }}"></script>
+    <script src="{{ asset('../resources/js/residente/visitantes.js') }}"></script>
+    <script src="{{ asset('../resources/js/residente/correspondencia.js') }}"></script>
 
 </body>
 </html>
