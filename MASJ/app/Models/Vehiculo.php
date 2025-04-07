@@ -2,30 +2,33 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Vehiculo extends Model
 {
-    use HasFactory;
+    protected $table = 'vehiculos';
+    protected $primaryKey = 'idVehiculo'; // Asegúrate de usar el nombre correcto de tu PK
     public $timestamps = false;
 
-    protected $table = 'vehiculos';
-    protected $primaryKey = 'id';
-
     protected $fillable = [
-        'PlacaVehiculo',
-        'MarcaVehiculo',
-        'ModeloVehiculo',
-        'hora_ingreso',
-        'hora_salida',
-        'valor_pagado',
-        'idBahia',
+        'Placa',
+        'Marca',
+        'Tipo',
+        'Color',
+        'idParqueadero',
+        'idVisitante', // solo si tu modelo lo relaciona
     ];
 
+    // Relación con Parqueadero
     public function parqueadero()
     {
-        return $this->belongsTo(Parqueadero::class, 'idBahia');
+        return $this->belongsTo(Parqueadero::class, 'idParqueadero');
+    }
+
+    // (Opcional) Relación con Visitante si aplica
+    public function visitante()
+    {
+        return $this->belongsTo(Visitante::class, 'idVisitante');
     }
 }
 
