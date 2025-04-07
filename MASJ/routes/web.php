@@ -10,7 +10,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\QuejasController;
 use App\Http\Controllers\ZonasComunesController;
 use App\Http\Controllers\CorrespondenciaController; 
-use App\Http\Controllers\VisitantesUsuController;
 use App\Http\Controllers\VehiculoController;
 use App\Http\Controllers\PaqueteriaController;
 use App\Http\Controllers\VisitanteController;
@@ -33,39 +32,37 @@ Route::get('/reset-password/{token}', [CustomPasswordResetController::class, 'sh
     ->name('password.reset');
 Route::post('/reset-password', [CustomPasswordResetController::class, 'resetPassword'])
     ->name('password.update');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
 Route::get('/', function () {
     return redirect()->route('Login.form');
 });
 
-Route::get('/residente/dashboard', function () {
+Route::get('/residente/dashboardR', function () {
     return view('residente.dashboardR');
 })->name('residente.dashboardR');
 
 Route::get('/dashboardR', [DashboardController::class, 'dashboardR'])->middleware(['auth'])->name('dashboardR');
 
 Route::get('/zonas-comunes', [ZonasComunesController::class, 'zonasComunes'])->middleware(['auth'])->name('zonas-comunes');
-Route::get('/visitantes', [VisitantesController::class, 'visitantes'])->middleware(['auth'])->name('visitantes');
+Route::get('/visitantes', [VisitanteController::class, 'index'])->middleware(['auth'])->name('visitantes.index');
 Route::get('/correspondencia', [CorrespondenciaController::class, 'correspondencia'])->middleware(['auth'])->name('correspondencia');
-Route::get('/Login', [LoginController::class, 'showLoginForm'])->name('Login.form');
-
-
-
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/quejas', [QuejasController::class, 'index'])->name('quejas.index');
     Route::post('/quejas', [QuejasController::class, 'store'])->name('quejas.store');
 });
 
-
 Auth::routes(['register' => false, 'reset' => false]); 
 Route::resource('vehiculos', VehiculoController::class);
 Route::resource('paqueterias', PaqueteriaController::class);
-Route::resource('visitantes', VisitanteController::class);
+// Route::resource('visitantes', VisitantesController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/guardia', function () {
+// ✅ Ruta para el dashboard del guardia
+Route::get('/guardia/dashboard', function () {
     return view('guardia.dashboard');
-})->name('guardia.dashboard');
+})->middleware(['auth'])->name('guardia.dashboard');
