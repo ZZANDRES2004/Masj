@@ -57,3 +57,8 @@ Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('Login.form');
 })->name('logout');
+
+
+Route::get('/perfil', function () {
+    return view('guardia.dashboard');
+})->name('perfil');

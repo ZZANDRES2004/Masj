@@ -14,7 +14,7 @@
 }
 
 .navbar {
-    background-color: #6f42c1 !important; 
+    background-color: #2F4F4F !important; 
     font-size: 24px;
     font-weight: bold;
 }
@@ -31,18 +31,111 @@
     background-color: #220034;
 }
 
-.submenu-link {
-    color: white;
-    padding: 8px 16px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.3s ease;
-    font-size: 1rem;
-    font-weight: 500;
+.submenu {
+    background-color: #1e2a38; // azul oscuro para el menú superior
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
+
+.submenu-link {
+    background-color: #5e865e;
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover,
+    &.active {
+        background-color: #4c6f4c;
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
 
 .submenu-link:hover {
-    background-color: #a040ff;
-    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: #fff;
 }
 
+// Estilos por enlace
+.submenu-link.vehiculos {
+    background-color: #198754; // verde Bootstrap
+}
+
+.submenu-link.paqueterias {
+    background-color: #0d6efd; // azul Bootstrap
+}
+
+.submenu-link.visitantes {
+    background-color: #6f42c1; // morado Bootstrap
+}
+
+// Activo (resaltado)
+.submenu-link.active {
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(255,255,255,0.7);
+}
+
+body {
+    background: linear-gradient(to bottom right, #17877f, #3fb17f); // fondo moderno
+    min-height: 100vh;
+    font-family: 'Nunito', sans-serif;
+}
+
+main {
+    background-color: transparent;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.vehiculos-container {
+    max-width: 1200px;
+    background-color: #ffffffcc; // blanco translúcido
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.paqueteria-container {
+    max-width: 1100px;
+    background-color: #ffffffcc;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.visitantes-container,
+.paqueteria-container {
+    max-width: 1100px;
+    background-color: #ffffffdd;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+// resources/sass/app.scss
+
+
+// Estilos personalizados
+.dashboard-container {
+    background-color: #f5f5f5;
+    min-height: 10vh;
+
+    .card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 2rem;
+    }
+
+    .btn {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+    }
+}
