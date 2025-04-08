@@ -54,7 +54,7 @@
         {{-- Asegúrate que la ruta 'registro' esté definida como POST en web.php --}}
         <form action="{{ route('registro') }}" method="POST" id="registroForm">
             @csrf
-            <input type="text" name="PrimerNombre" id="name" required value="{{ old('PrimerNombre') }}" autocomplete="off" placeholder="Primer Nombre" minlength="3" maxlength="10"
+            <input type="text" name="PrimerNombre" id="name" required value="{{ old('PrimerNombre') }}" autocomplete="off" placeholder="Primer Nombre" minlength="3" maxlength="20"
             pattern="[A-Za-z\s]+" title="Solo letras y espacios">
             
             @error('PrimerNombre')
@@ -62,18 +62,18 @@
             @enderror
 
             <input type="text" name="SegundoNombre" placeholder="Segundo Nombre" value="{{ old('SegundoNombre') }}" autocomplete="off" minlength="3"
-            maxlength="10">
+            maxlength="20"  pattern="[A-Za-z\s]+" title="Solo letras y espacios">
             @error('SegundoNombre')
             <p class="error">{{ $message }}</p>
             @enderror
 
-            <input type="text" name="PrimerApellido" placeholder="Primer Apellido" required value="{{ old('PrimerApellido') }}" autocomplete="off" placeholder="Primer Nombre" minlength="3" maxlength="10"
+            <input type="text" name="PrimerApellido" placeholder="Primer Apellido" required value="{{ old('PrimerApellido') }}" autocomplete="off" placeholder="Primer Nombre" minlength="3" maxlength="20"
             pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios" >
             @error('PrimerApellido')
             <p class="error">{{ $message }}</p>
             @enderror
 
-            <input type="text" name="SegundoApellido" placeholder="Segundo Apellido" value="{{ old('SegundoApellido') }}" autocomplete="off" placeholder="Primer Nombre" minlength="3" maxlength="10"
+            <input type="text" name="SegundoApellido" placeholder="Segundo Apellido" value="{{ old('SegundoApellido') }}" autocomplete="off" placeholder="Primer Nombre" minlength="3" maxlength="20"
             pattern="[A-Za-z\s]+" title="Solo se permiten letras y espacios" >
             @error('SegundoApellido')
             <p class="error">{{ $message }}</p>
