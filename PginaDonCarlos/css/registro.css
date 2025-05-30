@@ -111,6 +111,7 @@ body {
    height: 100%;
    color: #438e20;
    padding-top: 25px;
+   margin-top: -50px;
 }
 
 .tienda {
@@ -154,7 +155,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 20%;
-    margin-top: -46em;
+    margin-top: -44.7em;
     padding: 30px;
     
     transform: translate(87em, 10.3em);
@@ -263,7 +264,7 @@ input:focus{
 
 .regresar {
     position: absolute;
-    transform: translate(0em, 32em );
+    transform: translate(0em, 30em );
     z-index: 100;
     margin-left: 10px;
 }

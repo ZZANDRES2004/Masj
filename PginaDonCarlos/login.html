@@ -45,7 +45,7 @@ rel="stylesheet">
 
              <h1 class="registro">Iniciar Sesion</h1>
 
-            <form action="" method="">
+            <form id="loginForm">
         
 <br>
                 <label for="email">Email:</label><br>
@@ -75,6 +75,17 @@ rel="stylesheet">
         </div>
     </main>
 
-    
+    <script src="/scripts/inicio.js"></script>
+    <script>
+        // Agregar event listener al formulario de login
+        document.getElementById('loginForm').addEventListener('submit', handleLogin);
+        
+        // Mostrar usuarios en consola también
+        console.log('=== USUARIOS DE PRUEBA ===');
+        console.log('🔑 ADMIN: admin@doncarlos.com / Admin123');
+        console.log('👥 EMPLEADO: empleado@doncarlos.com / Emp123');
+        console.log('🛒 CLIENTE: cliente1@gmail.com / Cliente123');
+        console.log('💼 VENDEDOR: vendedor@doncarlos.com / Vend123');
+    </script>
 </body>
 </html>
