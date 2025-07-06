@@ -1,0 +1,465 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: JetBrains Mono, monospace;
+  overflow: hidden;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+@keyframes ingreso {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 5;
+  }
+}
+
+.izquierda {
+  display: flex;
+  background-color: orangered;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 250px;
+  height: 96dvh;
+  color: white;
+
+  animation-name: ingreso;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-direction: normal;
+  animation-duration: 2s;
+}
+
+li {
+  cursor: pointer;
+}
+
+.dash,
+.alerts,
+.settings,
+.reports,
+.users {
+  background: rgb(255, 102, 0);
+  width: 100%;
+  padding: 2px 10px 10px 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(255, 255, 255);
+  margin-bottom: 30px;
+
+  transition: all 0.5s;
+}
+
+.dash:hover,
+.alerts:hover,
+.settings:hover,
+.reports:hover,
+.users:hover {
+  width: 120%;
+}
+
+.icono {
+  display: flexbox;
+  flex-wrap: nowrap;
+}
+
+.nave {
+  margin-top: 10em;
+}
+
+svg {
+  width: 30px;
+  height: 3%;
+  margin-right: 10px;
+  transform: translateY(8px);
+  fill: rgb(253, 253, 253);
+}
+
+.tienda,
+.carlos {
+  position: absolute;
+  margin-left: 20px;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.tienda {
+  font-family: "Playwrite DK Loopet", cursive;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  color: white;
+}
+
+.logo {
+  margin-top: -5px;
+  border-radius: 10px 10px 0px 0px;
+  width: 13%;
+  position: absolute;
+  color: #56bb27;
+  background: black;
+  height: 100px;
+}
+
+.usuario {
+  position: absolute;
+  transform: translate(22em, -55em);
+  animation-name: ingreso;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-direction: normal;
+  animation-duration: 2s;
+}
+
+.usuario button {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  transform-origin: right center;
+  transform: translate(69.3pc, -2em);
+  padding: 5px 15px;
+  max-height: 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: rgba(245, 245, 245, 0.534);
+  backdrop-filter: blur(10px);
+  margin-left: -2px;
+  display: flex;
+  flex-direction: row;
+  transition: all 0.5s ease-out;
+  width: 10%;
+  overflow: hidden;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.usuario button:hover {
+  width: 30%;
+  border: 1px solid orangered;
+  background: orangered;
+  color: white;
+  box-sizing: border-box;
+}
+
+.direccion a {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.contenido {
+  position: absolute;
+  transform: translate(22em, -50em);
+  background: rgba(245, 245, 245, 0.534);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 20px 0px 10px 30px;
+  width: 20%;
+  box-sizing: border-box;
+
+  animation-name: ingreso;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-direction: normal;
+  animation-duration: 2s;
+}
+
+.planta1 {
+  display: flex;
+  position: absolute;
+  transform: translate(5em, -21.3em);
+  z-index: -100;
+
+  animation: plntasyfrutas 2s normal forwards running;
+}
+
+.planta2 {
+  display: flex;
+  position: absolute;
+  transform: translate(-5em, -9em);
+  z-index: 100;
+
+  animation: plntasyfrutas 2s normal forwards running;
+}
+
+.planta3 {
+  display: flex;
+  position: absolute;
+  transform: translate(48em, -10em);
+
+  animation: plntasyfrutas 2s normal forwards running;
+}
+
+.frutas {
+  display: flex;
+  position: absolute;
+  width: 1200px;
+  height: 1200px;
+  transform: translate(30em, -50em);
+  z-index: -100;
+
+  animation: plntasyfrutas 2s normal forwards running;
+}
+
+.arbol {
+  display: flex;
+  position: absolute;
+  transform: translate(48em, -10em);
+
+  animation: plntasyfrutas 2s normal forwards running;
+}
+
+@keyframes plntasyfrutas {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.revisar {
+  padding: 5px 15px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: rgba(245, 245, 245, 0.534);
+  backdrop-filter: blur(10px);
+  margin-left: -2px;
+  display: flex;
+  flex-direction: row;
+  transition: all 0.5s ease-out;
+  width: 0%;
+  overflow: hidden;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.ir {
+  transform: translate(-8px);
+  flex-shrink: 0;
+  transition: all 0.5s ease-out;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  z-index: -100;
+  transition: all 0.5s ease-out;
+}
+
+.revisar:hover {
+  width: 20%;
+  border: 1px solid orangered;
+  background: orangered;
+  color: white;
+  box-sizing: border-box;
+}
+
+.contenido2 {
+  position: absolute;
+  transform: translate(48.5em, -50em);
+  background: rgba(0, 0, 0, 0.534);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 20px 0px 10px 30px;
+  width: 20%;
+  box-sizing: border-box;
+  color: white;
+
+  animation-name: ingreso;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-direction: normal;
+  animation-duration: 2s;
+}
+
+.alerta1,
+.alerta2 {
+  background-color: whitesmoke;
+  color: black;
+  padding: 5px 20px 5px 10px;
+  border-radius: 10px;
+  width: 85%;
+  font-size: 15px;
+}
+
+.contenido2 ul {
+  margin-left: -40px;
+}
+
+hr {
+  width: 92%;
+  transform: translate(-10px);
+}
+
+.contenido3 {
+  position: absolute;
+  transform: translate(75em, -50em);
+  background: rgba(255, 255, 255, 0.267);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgb(0, 0, 0);
+  padding: 20px;
+  width: 35%;
+  box-sizing: border-box;
+
+  animation-name: ingreso;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-direction: normal;
+  animation-duration: 2s;
+}
+
+.chart-container {
+  position: relative;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chart-title {
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.chart-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.chart-btn {
+  padding: 5px 10px;
+  border: 1px solid orangered;
+  border-radius: 5px;
+  background: rgba(255, 69, 0, 0.1);
+  color: orangered;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.chart-btn:hover {
+  background: orangered;
+  color: white;
+}
+
+.stats-mini {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.stat-mini {
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 69, 0, 0.1);
+  border-radius: 8px;
+  flex: 1;
+  margin: 0 3px;
+}
+
+.stat-mini-value {
+  font-size: 16px;
+  font-weight: bold;
+  color: orangered;
+}
+
+.stat-mini-label {
+  font-size: 11px;
+  color: #666;
+}
+
+.contenido4 {
+  position: absolute;
+  transform: translate(48.5em, -29em);
+  background: rgba(0, 0, 0, 0.534);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 20px 0px 10px 30px;
+  margin-top: 2em;
+  width: 20%;
+  height: 47vh;
+  box-sizing: border-box;
+  color: white;
+  z-index: 100;
+
+  animation-name: ingreso;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  animation-direction: normal;
+  animation-duration: 2s;
+}
+
+.contenido4 ul {
+  margin-left: -2.5em;
+}
+
+.usu img {
+  transform: translate(0.3em, 0.6em);
+  width: 40px;
+  position: absolute;
+}
+
+.usu {
+  width: 50px;
+  height: 50px;
+  border-radius: 20px 20px 0px 0px;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+.usu div {
+  position: absolute;
+  transform: translate(4em, 0.8em);
+}
+
+.usuarios {
+  padding: 10px;
+  transition: all 0.5s ease-out;
+  width: 0%;
+}
+
+.usuarios:hover {
+  width: 95%;
+  background-color: #ff4500;
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.content-section.hidden {
+    display: none !important;
+}
+
+.nave li.active-link {
+    background-color: rgb(255, 60, 0) !important;
+}
+
+
