@@ -41,6 +41,16 @@ private int id;
         this.fecha = fecha;
     }
     
+    private boolean activo = true;
+
+public boolean isActivo() {
+return activo;
+}
+
+public void setActivo(boolean activo) {
+this.activo = activo;
+}
+
 @ManyToOne
 @JoinColumn(name = "rol_id")
 private Rol rol;

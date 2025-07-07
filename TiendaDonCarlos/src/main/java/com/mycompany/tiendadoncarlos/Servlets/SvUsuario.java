@@ -32,7 +32,7 @@ public class SvUsuario extends HttpServlet {
         HttpSession misesion = request.getSession();
         misesion.setAttribute("listaUsuarios", listaUsuarios);
 
-        response.sendRedirect("mostrarUsuarios.jsp");
+        response.sendRedirect("adminUsuarios.jsp");
     }
 
     @Override

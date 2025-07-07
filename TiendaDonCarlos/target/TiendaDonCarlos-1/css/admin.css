@@ -7,24 +7,6 @@ body {
   -webkit-box-sizing: border-box;
 }
 
-@keyframes ingreso {
-  0% {
-    opacity: 0;
-  }
-
-  25% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 5;
-  }
-}
-
 .izquierda {
   display: flex;
   background-color: orangered;
@@ -35,11 +17,6 @@ body {
   height: 96dvh;
   color: white;
 
-  animation-name: ingreso;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-  animation-direction: normal;
-  animation-duration: 2s;
 }
 
 li {
@@ -115,11 +92,6 @@ svg {
 .usuario {
   position: absolute;
   transform: translate(22em, -55em);
-  animation-name: ingreso;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-  animation-direction: normal;
-  animation-duration: 2s;
 }
 
 .usuario button {
@@ -168,11 +140,6 @@ svg {
   width: 20%;
   box-sizing: border-box;
 
-  animation-name: ingreso;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-  animation-direction: normal;
-  animation-duration: 2s;
 }
 
 .planta1 {
@@ -181,7 +148,6 @@ svg {
   transform: translate(5em, -21.3em);
   z-index: -100;
 
-  animation: plntasyfrutas 2s normal forwards running;
 }
 
 .planta2 {
@@ -190,7 +156,6 @@ svg {
   transform: translate(-5em, -9em);
   z-index: 100;
 
-  animation: plntasyfrutas 2s normal forwards running;
 }
 
 .planta3 {
@@ -198,7 +163,6 @@ svg {
   position: absolute;
   transform: translate(48em, -10em);
 
-  animation: plntasyfrutas 2s normal forwards running;
 }
 
 .frutas {
@@ -209,7 +173,6 @@ svg {
   transform: translate(30em, -50em);
   z-index: -100;
 
-  animation: plntasyfrutas 2s normal forwards running;
 }
 
 .arbol {
@@ -217,22 +180,8 @@ svg {
   position: absolute;
   transform: translate(48em, -10em);
 
-  animation: plntasyfrutas 2s normal forwards running;
 }
 
-@keyframes plntasyfrutas {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
 
 .revisar {
   padding: 5px 15px;
@@ -283,12 +232,6 @@ a {
   width: 20%;
   box-sizing: border-box;
   color: white;
-
-  animation-name: ingreso;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-  animation-direction: normal;
-  animation-duration: 2s;
 }
 
 .alerta1,
@@ -320,12 +263,6 @@ hr {
   padding: 20px;
   width: 35%;
   box-sizing: border-box;
-
-  animation-name: ingreso;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-  animation-direction: normal;
-  animation-duration: 2s;
 }
 
 .chart-container {
@@ -405,16 +342,11 @@ hr {
   padding: 20px 0px 10px 30px;
   margin-top: 2em;
   width: 20%;
-  height: 47vh;
+  height: 41vh;
   box-sizing: border-box;
   color: white;
   z-index: 100;
-
-  animation-name: ingreso;
-  animation-fill-mode: forwards;
-  animation-play-state: running;
-  animation-direction: normal;
-  animation-duration: 2s;
+  overflow: hidden;
 }
 
 .contenido4 ul {
