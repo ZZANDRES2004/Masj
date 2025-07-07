@@ -3,8 +3,10 @@ com\mycompany\tiendadoncarlos\resources\JakartaEE8Resource.class
 com\mycompany\tiendadoncarlos\Servlets\SvUsuario.class
 com\mycompany\tiendadoncarlos\UsuarioJpaController.class
 logica\Usuario.class
+logica\Rol_.class
 com\mycompany\tiendadoncarlos\Servlets\SvLogin.class
 logica\Controladora.class
+logica\Usuario_.class
 com\mycompany\tiendadoncarlos\exceptions\NonexistentEntityException.class
 persistencia\UsuarioJpaController.class
 persistencia\RolJpaController.class
