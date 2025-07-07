@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-07-2025 a las 02:15:45
+-- Tiempo de generación: 07-07-2025 a las 22:31:08
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -135,19 +135,20 @@ CREATE TABLE `usuario` (
   `password` varchar(100) DEFAULT NULL,
   `telefono` varchar(50) DEFAULT NULL,
   `tipo_documento` varchar(50) DEFAULT NULL,
-  `rol_id` int(11) DEFAULT NULL
+  `rol_id` int(11) DEFAULT NULL,
+  `ACTIVO` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `direccion`, `documento`, `email`, `fecha`, `name`, `password`, `telefono`, `tipo_documento`, `rol_id`) VALUES
-(1, 'calle 41 f sur Â· 81 g 08', '1030546821', 'nicolasdelahoz1@gmail.com', '2025-07-08', 'nicolas andres ', '200721qQq$', '3102704993', 'cedula', 1),
-(2, 'calle 41 f sur Â· 81 g 08', '1020756834', 'delahozbayona223@gmail.com', '2025-07-01', 'juan pablo de la hoz bayona', '200721qQq$', '3102606774', 'cedula', 3),
-(3, 'Cra 10', '100200300', 'juan@gmail.com', '2024-01-01', 'Juan Cliente', '1234', '1234567890', 'CC', 1),
-(4, 'Calle 45', '400500600', 'laura@gmail.com', '2024-01-01', 'Laura Empleada', 'abcd', '987654321', 'CC', 2),
-(5, 'Av. Central', '900100200', 'admin@gmail.com', '2024-01-01', 'Carlos Admin', 'adminpass', '5551234', 'CC', 3);
+INSERT INTO `usuario` (`id`, `direccion`, `documento`, `email`, `fecha`, `name`, `password`, `telefono`, `tipo_documento`, `rol_id`, `ACTIVO`) VALUES
+(1, 'calle 41 f sur Â· 81 g 08', '1030546821', 'nicolasdelahoz1@gmail.com', '2025-07-08', 'nicolas andres ', '200721qQq$', '3102704993', 'cedula', 1, 1),
+(2, 'calle 41 f sur Â· 81 g 08', '1020756834', 'delahozbayona223@gmail.com', '2025-07-01', 'juan pablo de la hoz bayona', '200721qQq$', '3102606774', 'cedula', 3, 1),
+(3, 'Cra 10', '100200300', 'juan@gmail.com', '2024-01-01', 'Juan Cliente', '1234', '1234567890', 'CC', 1, 1),
+(4, 'Calle 45', '400500600', 'laura@gmail.com', '2024-01-01', 'Laura Empleada', 'abcd', '987654321', 'CC', 2, 1),
+(5, 'Av. Central', '900100200', 'admin@gmail.com', '2024-01-01', 'Carlos Admin', 'adminpass', '5551234', 'CC', 3, 1);
 
 -- --------------------------------------------------------
 
