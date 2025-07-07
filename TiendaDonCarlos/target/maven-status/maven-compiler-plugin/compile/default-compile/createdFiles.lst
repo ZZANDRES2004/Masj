@@ -3,9 +3,12 @@ com\mycompany\tiendadoncarlos\resources\JakartaEE8Resource.class
 com\mycompany\tiendadoncarlos\Servlets\SvUsuario.class
 com\mycompany\tiendadoncarlos\UsuarioJpaController.class
 logica\Usuario.class
+com\mycompany\tiendadoncarlos\Servlets\SvLogin.class
 logica\Controladora.class
 com\mycompany\tiendadoncarlos\exceptions\NonexistentEntityException.class
 persistencia\UsuarioJpaController.class
+persistencia\RolJpaController.class
+logica\Rol.class
 com\mycompany\tiendadoncarlos\JakartaRestConfiguration.class
 persistencia\exceptions\NonexistentEntityException.class
 persistencia\exceptions\PreexistingEntityException.class

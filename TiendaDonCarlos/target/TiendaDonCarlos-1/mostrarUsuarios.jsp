@@ -19,6 +19,7 @@
                 <p><b>Usuarios N° <%=cont%></b></p>
                 <p>Email: <%=usu.getEmail()%></p>
                 <p>Contraseña: <%=usu.getPassword()%></p>
+                <p>Rol: <%=usu.getRol()%></p>
                 <p>------------------------------------</p>
                 <% cont = cont + 1;%>
         <%}%>

@@ -9,10 +9,8 @@
 
     <!-- Declara tus entidades manualmente o usa escaneo automático si el proveedor lo soporta -->
      <class>logica.Usuario</class>
-     
-     
-    <!-- Para que se detecten clases no listadas explícitamente -->
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+     <class>logica.Rol</class>
+
 
     <properties>
       <!-- Conexión JDBC -->

@@ -14,4 +14,13 @@ public class Controladora {
     public List<Usuario> traerUsuarios() {
         return controlPersis.traerUsuarios();
     }
+
+    public Rol traerRolPorNombre(String nombre) {
+    return controlPersis.traerRolPorNombre(nombre);
+}
+
+    public Usuario traerUsuarioPorEmail(String email) {
+    return controlPersis.traerUsuarioPorEmail(email);
+}
+   
 }

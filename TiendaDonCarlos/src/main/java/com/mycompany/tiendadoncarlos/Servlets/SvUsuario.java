@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import logica.Controladora;
+import logica.Rol;
 import logica.Usuario;
 
 @WebServlet(name = "SvUsuario", urlPatterns = {"/SvUsuario"})
@@ -56,6 +57,9 @@ public class SvUsuario extends HttpServlet {
         usu.setTipo_documento(tipo_documento);
         usu.setDocumento(documento);
         usu.setFecha(fecha);
+
+        Rol rolCliente = control.traerRolPorNombre("cliente");
+        usu.setRol(rolCliente);
 
         control.crearUsuario(usu);
         

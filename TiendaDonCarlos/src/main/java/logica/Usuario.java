@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Usuario implements Serializable {
@@ -38,6 +40,12 @@ private int id;
         this.documento = documento;
         this.fecha = fecha;
     }
+    
+@ManyToOne
+@JoinColumn(name = "rol_id")
+private Rol rol;
+
+    
 
     public int getId() {
         return id;
@@ -110,4 +118,13 @@ private int id;
     public void setPassword(String password) {
         this.password = password;
     }
+
+ public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
 }

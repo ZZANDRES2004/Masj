@@ -1,4 +1,4 @@
-        // --- Lógica de JavaScript para la navegación de la barra lateral ---
+// --- Lógica de JavaScript para la navegación de la barra lateral ---
         document.addEventListener('DOMContentLoaded', function () {
             const navLinks = document.querySelectorAll('.nave li'); // Selecciona los <li> dentro de .nave
             const contentSections = document.querySelectorAll('.content-section');

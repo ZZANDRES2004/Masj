@@ -5,8 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import logica.Usuario;
@@ -131,4 +133,18 @@ public class UsuarioJpaController implements Serializable {
             em.close();
         }
     }
+    
+  public Usuario traerUsuarioPorEmail(String email) {
+    EntityManager em = getEntityManager();
+    try {
+        TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u WHERE u.email = :email", Usuario.class);
+        query.setParameter("email", email);
+        List<Usuario> resultados = query.getResultList();
+        return resultados.isEmpty() ? null : resultados.get(0);
+    } finally {
+        em.close();
+    }
+}
+
+
 }

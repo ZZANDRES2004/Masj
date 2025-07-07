@@ -47,7 +47,7 @@ rel="stylesheet">
 
              <h1 class="registro">Iniciar Sesion</h1>
 
-             <form id="loginForm" >
+             <form id="loginForm" action="SvLogin" method="POST" >
         
 <br>
                 <label for="email">Email:</label><br>
