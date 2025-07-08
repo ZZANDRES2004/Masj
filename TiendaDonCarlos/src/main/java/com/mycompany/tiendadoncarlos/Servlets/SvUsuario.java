@@ -26,12 +26,18 @@ public class SvUsuario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Usuario> listaUsuarios = new ArrayList<>();
-        listaUsuarios = control.traerUsuarios();
+        List<Usuario> todos = control.traerUsuarios();
+        List<Usuario> filtrados = new ArrayList<>();
+
+        for (Usuario u : todos) {
+            String rol = u.getRol().getNombre().toLowerCase();
+            if (rol.equals("admin") || rol.equals("empleado")) {
+                filtrados.add(u);
+            }
+        }
 
         HttpSession misesion = request.getSession();
-        misesion.setAttribute("listaUsuarios", listaUsuarios);
-
+        misesion.setAttribute("listaUsuarios", filtrados);
         response.sendRedirect("adminUsuarios.jsp");
     }
 
@@ -62,8 +68,8 @@ public class SvUsuario extends HttpServlet {
         usu.setRol(rolCliente);
 
         control.crearUsuario(usu);
-        
-              response.sendRedirect("login.jsp");
+
+        response.sendRedirect("admin.jsp");
     }
 
     @Override

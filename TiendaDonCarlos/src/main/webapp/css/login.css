@@ -250,8 +250,9 @@ input:focus{
     margin-left: 10px;
 }
 
-a{
+.atras{
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
+

@@ -44,28 +44,19 @@ public class UsuarioJpaController implements Serializable {
         }
     }
 
-    public void edit(Usuario usuario) throws NonexistentEntityException, Exception {
-        EntityManager em = null;
-        try {
-            em = getEntityManager();
-            em.getTransaction().begin();
-            usuario = em.merge(usuario);
-            em.getTransaction().commit();
-        } catch (Exception ex) {
-            String msg = ex.getLocalizedMessage();
-            if (msg == null || msg.length() == 0) {
-                int id = usuario.getId();
-                if (findUsuario(id) == null) {
-                    throw new NonexistentEntityException("The usuario with id " + id + " no longer exists.");
-                }
-            }
-            throw ex;
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-        }
+    public void edit(Usuario usuario) throws Exception {
+    EntityManager em = getEntityManager();
+    try {
+        em.getTransaction().begin();
+        usuario = em.merge(usuario);
+        em.getTransaction().commit();
+    } catch (Exception ex) {
+        throw ex;
+    } finally {
+        em.close();
     }
+}
+
 
     public void destroy(int id) throws NonexistentEntityException {
         EntityManager em = null;
@@ -113,13 +104,14 @@ public class UsuarioJpaController implements Serializable {
     }
 
     public Usuario findUsuario(int id) {
-        EntityManager em = getEntityManager();
-        try {
-            return em.find(Usuario.class, id);
-        } finally {
-            em.close();
-        }
+    EntityManager em = getEntityManager();
+    try {
+        return em.find(Usuario.class, id);
+    } finally {
+        em.close();
     }
+}
+
 
     public int getUsuarioCount() {
         EntityManager em = getEntityManager();

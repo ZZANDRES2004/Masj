@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import javax.servlet.ServletContext;
 
 import logica.Controladora;
 import logica.Usuario;
@@ -11,49 +12,58 @@ import logica.Rol;
 
 @WebServlet(name = "SvLogin", urlPatterns = {"/SvLogin"})
 public class SvLogin extends HttpServlet {
-    
-Controladora control = new Controladora();
 
-@Override
-protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+    Controladora control = new Controladora();
 
-    String email = request.getParameter("email");
-    String password = request.getParameter("password");
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-    Usuario usu = control.traerUsuarioPorEmail(email); // Asegúrate de tener implementado este método
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
-    if (usu != null && usu.getPassword().equals(password)) {
-        Rol rol = usu.getRol();
+        Usuario usu = control.traerUsuarioPorEmail(email);
 
-        if (rol != null) {
-            String nombreRol = rol.getNombre().toLowerCase();
+        if (usu != null && password != null && password.equals(usu.getPassword())) {
 
-            HttpSession sesion = request.getSession();
-            sesion.setAttribute("usuario", usu);
-            sesion.setAttribute("rol", nombreRol);
-
-            if (nombreRol.equals("admin")) {
-                // Cargar lista de usuarios si es admin
-                sesion.setAttribute("listaUsuarios", control.traerUsuarios());
-                response.sendRedirect("admin.jsp");
-            } else if (nombreRol.equals("empleado")) {
-                response.sendRedirect("empleado.jsp");
-            } else {
-                // Cliente u otro rol no permitido
-                response.sendRedirect("login.jsp?error=acceso_denegado");
+            if (!usu.isActivo()) {
+                response.sendRedirect("login.jsp?error=usuario_inactivo");
+                return;
             }
-            return;
+
+            Rol rol = usu.getRol();
+            if (rol != null) {
+                String nombreRol = rol.getNombre().toLowerCase();
+
+                HttpSession sesion = request.getSession();
+                sesion.setAttribute("usuario", usu);
+                sesion.setAttribute("rol", nombreRol);
+
+                if (nombreRol.equals("admin")) {
+                    sesion.setAttribute("listaUsuarios", control.traerUsuarios());
+                    response.sendRedirect("admin.jsp");
+                } else if (nombreRol.equals("empleado")) {
+                    // Validar si empleado.jsp existe
+                    String ruta = "/empleado.jsp";
+                    ServletContext context = getServletContext();
+                    if (context.getResource(ruta) != null) {
+                        response.sendRedirect("empleado.jsp");
+                    } else {
+                        response.sendRedirect("error404.jsp");
+                    }
+                } else {
+                    response.sendRedirect("login.jsp?error=acceso_denegado");
+                }
+                return;
+            }
         }
+
+        response.sendRedirect("login.jsp?error=credenciales_invalidas");
     }
 
-    // Credenciales inválidas
-    response.sendRedirect("login.jsp?error=credenciales_invalidas");
-}
-
-@Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
-    response.sendRedirect("login.jsp");
-}
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.sendRedirect("login.jsp");
+    }
 }

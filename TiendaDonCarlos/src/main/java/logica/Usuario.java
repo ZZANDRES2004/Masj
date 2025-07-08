@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Column;
 
 @Entity
 public class Usuario implements Serializable {
@@ -40,8 +41,6 @@ private int id;
         this.documento = documento;
         this.fecha = fecha;
     }
-    
-    private boolean activo = true;
 
 public boolean isActivo() {
 return activo;
@@ -50,6 +49,10 @@ return activo;
 public void setActivo(boolean activo) {
 this.activo = activo;
 }
+
+@Column(name = "ACTIVO")
+private boolean activo = true;
+
 
 @ManyToOne
 @JoinColumn(name = "rol_id")

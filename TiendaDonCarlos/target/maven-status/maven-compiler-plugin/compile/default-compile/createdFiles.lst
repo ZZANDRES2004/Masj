@@ -1,12 +1,15 @@
 com\mycompany\tiendadoncarlos\exceptions\PreexistingEntityException.class
 com\mycompany\tiendadoncarlos\resources\JakartaEE8Resource.class
 com\mycompany\tiendadoncarlos\Servlets\SvUsuario.class
+com\mycompany\tiendadoncarlos\Servlets\SvUsuarioInhabilitar.class
 com\mycompany\tiendadoncarlos\UsuarioJpaController.class
 logica\Usuario.class
+com\mycompany\tiendadoncarlos\Servlets\SvEditarUsuario.class
 com\mycompany\tiendadoncarlos\Servlets\SvLogin.class
 logica\Controladora.class
 com\mycompany\tiendadoncarlos\exceptions\NonexistentEntityException.class
 persistencia\UsuarioJpaController.class
+com\mycompany\tiendadoncarlos\Servlets\SvLogout.class
 persistencia\RolJpaController.class
 logica\Rol.class
 com\mycompany\tiendadoncarlos\JakartaRestConfiguration.class
@@ -15,3 +18,4 @@ persistencia\exceptions\PreexistingEntityException.class
 persistencia\ControladoraPersistencia.class
 persistencia\exceptions\IllegalOrphanException.class
 com\mycompany\tiendadoncarlos\exceptions\IllegalOrphanException.class
+com\mycompany\tiendadoncarlos\Servlets\SvUsuarioEliminar.class

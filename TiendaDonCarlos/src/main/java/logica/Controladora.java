@@ -15,12 +15,40 @@ public class Controladora {
         return controlPersis.traerUsuarios();
     }
 
+    public Usuario traerUsuario(int id) {
+        return controlPersis.traerUsuario(id);
+    }
+
+    public void editarUsuario(Usuario usu) {
+        controlPersis.editarUsuario(usu);
+    }
+
     public Rol traerRolPorNombre(String nombre) {
-    return controlPersis.traerRolPorNombre(nombre);
-}
+        return controlPersis.traerRolPorNombre(nombre);
+    }
 
     public Usuario traerUsuarioPorEmail(String email) {
-    return controlPersis.traerUsuarioPorEmail(email);
-}
-   
+        return controlPersis.traerUsuarioPorEmail(email);
+    }
+
+    public void eliminarUsuario(int id) {
+        controlPersis.eliminarUsuario(id);
+    }
+
+    public void inhabilitarUsuario(int id) {
+        Usuario usu = controlPersis.traerUsuario(id);
+        if (usu != null) {
+            usu.setActivo(false); // Suponiendo que tienes un atributo booleano "activo"
+            controlPersis.modificarUsuario(usu);
+        }
+    }
+
+    public void activarUsuario(int id) {
+        Usuario usu = controlPersis.traerUsuario(id);
+        if (usu != null) {
+            usu.setActivo(true);
+            controlPersis.modificarUsuario(usu);
+        }
+    }
+
 }

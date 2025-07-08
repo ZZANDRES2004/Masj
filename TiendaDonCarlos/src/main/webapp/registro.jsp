@@ -34,10 +34,7 @@ rel="stylesheet">
     </div>
 
     <h1 class="regresar"> 
-        <form action="SvUsuario" method="GET">
-        <button type="submit">mostar Usuarios</button>
-        </form>
-        <a href="index.jsp#buttons"><img src="imagenes/arrow_back_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" alt="">Regresar</a>
+        <a href="adminUsuarios.jsp#buttons"><img src="imagenes/arrow_back_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" alt="">Regresar</a>
     </h1>
 
     <footer class="pie">  <span class="tienda"> &copy; Tienda</span> DonCarlos</footer>

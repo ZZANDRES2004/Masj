@@ -194,7 +194,8 @@
 
     <div id="btnContainer">
       <button id="btnLogin"><a href="login.jsp">Iniciar Sesión</a></button>
-      <button id="btnRegister"><a href="registro.jsp">Registrar</a></button>
+      
+      <%--<button id="btnRegister"><a href="registro.jsp">Registrar</a></button>--%>
     </div>
   </main>
 </body>

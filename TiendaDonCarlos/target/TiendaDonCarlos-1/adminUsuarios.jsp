@@ -2,6 +2,20 @@
 <%@page import="logica.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<%
+    HttpSession sesion = request.getSession(false);
+    if (sesion == null || sesion.getAttribute("usuario") == null) {
+        response.sendRedirect("login.jsp");
+        return;
+    }
+%>
+
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0
+    response.setDateHeader("Expires", 0); // Proxies
+%>
+
 <!DOCTYPE html> 
 <html> 
     <head> 
@@ -38,15 +52,15 @@
             <ul class="nave" style="list-style: none;">
                 <li class="dash active-link" data-target="dashboard-content"> 
                     <a href="admin.jsp">
-                    <span class="icono">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
-                            fill="#1f1f1f">
-                        <path
-                            d="M600-160v-280h280v280H600ZM440-520v-280h440v280H440ZM80-160v-280h440v280H80Zm0-360v-280h280v280H80Zm440-80h280v-120H520v120ZM160-240h280v-120H160v120Zm520 0h120v-120H680v120ZM160-600h120v-120H160v120Zm360 0Zm-80 240Zm240 0ZM280-600Z" />
-                        </svg></span>Dashboard
-                        </a>
-                    </li>
+                        <span class="icono">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                fill="#1f1f1f">
+                            <path
+                                d="M600-160v-280h280v280H600ZM440-520v-280h440v280H440ZM80-160v-280h440v280H80Zm0-360v-280h280v280H80Zm440-80h280v-120H520v120ZM160-240h280v-120H160v120Zm520 0h120v-120H680v120ZM160-600h120v-120H160v120Zm360 0Zm-80 240Zm240 0ZM280-600Z" />
+                            </svg></span>Dashboard
+                    </a>
+                </li>
 
                 <li class="alerts" data-target="alertas-content">
                     <span class="icono">
@@ -92,21 +106,22 @@
         <header class="info">
             <section class="usuario">
                 <h2>Bienvenido, [Nombre del Usuario]</h2>
-                <button>
+                <button class="botones">
                     <img class="ir" src="imagenes/hogar.png" alt="ir" width="30px" height="30px">
                     <span class="direccion">
-                        <a href="login.jsp"> Cerrar Sesion</a> </span>
+                        <a href="SvLogout"> Cerrar Sesion</a> </span>
                 </button>
             </section>
         </header
 
+
         <h1>Gestión de Usuarios</h1>
 
-        <a href="registro.jsp">➕ Agregar nuevo usuario</a><br><br>
+        <a href="adminRegistro.jsp">Agregar nuevo usuario</a><br><br>
 
-        <table border="1" cellpadding="10">
+        <table cellpadding="10">
             <thead>
-                <tr>
+                <tr>    
                     <th>ID</th><th>Nombre</th><th>Email</th><th>Rol</th><th>Activo</th><th>Acciones</th>
                 </tr>
             </thead>
@@ -117,23 +132,33 @@
                         for (Usuario u : listaUsuarios) {
                 %>
                 <tr>
-                    <td><%= u.getId()%></td>
-                    <td><%= u.getName()%></td>
-                    <td><%= u.getEmail()%></td>
-                    <td><%= u.getRol().getNombre()%></td>
-                    <td><%= u.isActivo() ? "Sí" : "No"%></td>
+                    <td class="id"><%= u.getId()%></td>
+                    <td class="nombre"><%= u.getName()%></td>
+                    <td class="email"><%= u.getEmail()%></td>
+                    <td class="rol"><%= u.getRol().getNombre()%></td>
+                    <td class="activo"><%= u.isActivo() ? "Sí" : "No"%></td>
                     <td>
-                        <form action="SvUsuarioEditar" method="GET" style="display:inline;">
-                            <input type="hidden" name="id" value="<%= u.getId()%>"/>
-                            <button type="submit">Editar</button>
+                        <form onsubmit="return false;" style="display:inline;">
+                            <button  class="boton" type="button" 
+                                     onclick="abrirModal(<%= u.getId()%>,
+                                                    '<%= u.getName()%>',
+                                                    '<%= u.getEmail()%>',
+                                                    '<%= u.getDireccion()%>',
+                                                    '<%= u.getTelefono()%>',
+                                                    '<%= u.getTipo_documento()%>',
+                                                    '<%= u.getDocumento()%>',
+                                                    '<%= u.getFecha()%>',
+                                                    '<%= u.getRol()%>')">
+                                Editar
+                            </button>
                         </form>
                         <form action="SvUsuarioEliminar" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<%= u.getId()%>"/>
-                            <button type="submit" onclick="return confirm('¿Eliminar este usuario?');">Eliminar</button>
+                            <button  class="boton"  type="submit" onclick="return confirm('¿Eliminar este usuario?');">Eliminar</button>
                         </form>
                         <form action="SvUsuarioInhabilitar" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<%= u.getId()%>"/>
-                            <button type="submit"><%= u.isActivo() ? "Inhabilitar" : "Activar"%></button>
+                            <button class="boton"  type="submit"><%= u.isActivo() ? "Inhabilitar" : "Activar"%></button>
                         </form>
                     </td>
                 </tr>
@@ -168,5 +193,56 @@
                 <img src="svg/plantas/planta4.webp" wid th="1200px" height="700px" alt="">
             </div>
         </main>
+
+        <!-- Modal flotante de edición -->
+        <div id="editarModal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close" onclick="cerrarModal()">&times;</span>
+                <h2>Editar Usuario</h2>
+                <form id="formEditar" method="POST" action="SvUsuarioEditar">
+                    <input type="hidden" name="id" id="editar-id">
+
+                    Nombre: <input type="text" name="name" id="editar-name"><br>
+                    Email: <input type="email" name="email" id="editar-email"><br>
+                    Dirección: <input type="text" name="direccion" id="editar-direccion"><br>
+                    Teléfono: <input type="text" name="telefono" id="editar-telefono"><br>
+                    <label for="documento">Tipo Documento</label>
+                    <select name="tipo_documento" id="editar-tipo_documento">
+                        <option value="">Seleccione</option>
+                        <option value="cedula">Cedula de ciudadnia</option>
+                        <option value="pasaporte">pasaporte</option>
+                    </select><br>
+                    Documento: <input type="text" name="documento" id="editar-documento"><br>
+                    Fecha: <input type="date" name="fecha" id="editar-fecha"><br>
+                     <label for="rol">Rol</label>
+                    <select name="rol" id="editar-rol">
+                        <option value="">Seleccione</option>
+                        <option value="admin">Administrador</option>
+                        <option value="empleado">Empleado</option>
+                    </select><br>
+
+                    <button type="submit">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function abrirModal(id, name, email, direccion, telefono, tipoDoc, documento, fecha, rol) {
+                document.getElementById("editar-id").value = id;
+                document.getElementById("editar-name").value = name;
+                document.getElementById("editar-email").value = email;
+                document.getElementById("editar-direccion").value = direccion;
+                document.getElementById("editar-telefono").value = telefono;
+                document.getElementById("editar-tipo_documento").value = tipoDoc;
+                document.getElementById("editar-documento").value = documento;
+                document.getElementById("editar-fecha").value = fecha;
+                document.getElementById("editar-rol").value = rol;
+                document.getElementById("editarModal").classList.add("show");
+            }
+
+            function cerrarModal() {
+                document.getElementById("editarModal").classList.remove("show");
+            }
+        </script>
     </body> 
 </html>
