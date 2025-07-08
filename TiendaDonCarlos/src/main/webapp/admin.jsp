@@ -72,6 +72,15 @@
                         </span> Usuarios
                         </a>    
                         </li>
+                        
+           <li class="cliente">
+    <a href="Cliente.jsp" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+        <span class="icono">
+            <img src="imagenes/cliente.png" width="24px" height="24px" />
+        </span>
+        <span style="color: black;">Clientes</span>
+    </a>
+</li>
 
                     <li class="settings" data-target="ajustes-content"><span class="icono"><svg
                                 xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"

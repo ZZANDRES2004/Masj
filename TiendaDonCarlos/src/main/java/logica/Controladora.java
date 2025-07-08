@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.List;
+import persistencia.ClienteJpaController;
 import persistencia.ControladoraPersistencia;
 
 public class Controladora {
@@ -23,4 +24,13 @@ public class Controladora {
     return controlPersis.traerUsuarioPorEmail(email);
 }
    
+    public void crearCliente(Cliente cli) {
+    ClienteJpaController clienteJPA = new ClienteJpaController(); // o la instancia compartida si la tienes
+    try {
+        clienteJPA.create(cli);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
 }

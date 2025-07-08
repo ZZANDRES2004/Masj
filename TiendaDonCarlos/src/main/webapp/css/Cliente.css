@@ -1,0 +1,175 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Panel lateral */
+.izquierda {
+    width: 250px;
+    background-color: #ff7f50;
+    color: white;
+    padding: 30px 20px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.tienda {
+    display: block;
+    font-size: 24px;
+    color: #fffdd0;
+}
+
+.carlos {
+    display: block;
+    font-size: 20px;
+    color: #fff;
+}
+
+.nave li {
+    margin-bottom: 18px;
+}
+
+.nave a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.nave a:hover,
+.nave .active-link {
+    color: #222;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Header superior */
+header.info {
+    margin-left: 250px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.usuario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.usuario h2 {
+    font-size: 24px;
+}
+
+.usuario button {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.usuario .direccion a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+/* Formulario */
+.container2 {
+    margin-left: 300px;
+    padding: 40px;
+    max-width: 500px;
+    background: #ffffffb3;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.formulario-cliente h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.formulario-cliente input[type="text"],
+.formulario-cliente input[type="email"],
+.formulario-cliente input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.formulario-cliente input:focus {
+    border-bottom-color: #ff7f50;
+    outline: none;
+}
+
+.formulario-cliente .enviar {
+    width: 100%;
+    padding: 12px;
+    background: #ff7f50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.formulario-cliente .enviar:hover {
+    background: #e96c3f;
+}
+
+/* Plantas decorativas */
+.planta1,
+.planta2,
+.planta3,
+.frutas {
+    position: absolute;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.planta1 {
+    top: 50px;
+    right: 30px;
+}
+
+.planta2 {
+    bottom: 50px;
+    right: 80px;
+}
+
+.planta3 {
+    bottom: 10px;
+    left: 60%;
+}
+
+.frutas {
+    bottom: -80px;
+    left: 0;
+}

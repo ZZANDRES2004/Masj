@@ -1,7 +1,10 @@
 C:\xampp\htdocs\Masj\TiendaDonCarlos\src\main\java\com\mycompany\tiendadoncarlos\exceptions\IllegalOrphanException.java
 C:\xampp\htdocs\Masj\TiendaDonCarlos\src\main\java\com\mycompany\tiendadoncarlos\Servlets\SvUsuario.java
 C:\xampp\htdocs\Masj\TiendaDonCarlos\src\main\java\com\mycompany\tiendadoncarlos\Servlets\SvLogin.java
+C:\xampp\htdocs\Masj\TiendaDonCarlos\src\main\java\persistencia\ClienteJpaController.java
+C:\xampp\htdocs\Masj\TiendaDonCarlos\src\main\java\com\mycompany\tiendadoncarlos\Servlets\SvRegistrarCliente.java
 C:\xampp\htdocs\Masj\TiendaDonCarlos\src\main\java\com\mycompany\tiendadoncarlos\JakartaRestConfiguration.java
+C:\xampp\htdocs\Masj\TiendaDonCarlos\src\main\java\logica\Cliente.java
 C:\xampp\htdocs\Masj\TiendaDonCarlos\src\main\java\logica\Controladora.java
 C:\xampp\htdocs\Masj\TiendaDonCarlos\src\main\java\com\mycompany\tiendadoncarlos\exceptions\NonexistentEntityException.java
 C:\xampp\htdocs\Masj\TiendaDonCarlos\src\main\java\logica\Rol.java

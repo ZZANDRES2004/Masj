@@ -1,6 +1,8 @@
 com\mycompany\tiendadoncarlos\exceptions\PreexistingEntityException.class
 com\mycompany\tiendadoncarlos\resources\JakartaEE8Resource.class
 com\mycompany\tiendadoncarlos\Servlets\SvUsuario.class
+persistencia\ClienteJpaController.class
+logica\Cliente_.class
 com\mycompany\tiendadoncarlos\UsuarioJpaController.class
 logica\Usuario.class
 logica\Rol_.class
@@ -9,7 +11,9 @@ logica\Controladora.class
 logica\Usuario_.class
 com\mycompany\tiendadoncarlos\exceptions\NonexistentEntityException.class
 persistencia\UsuarioJpaController.class
+com\mycompany\tiendadoncarlos\Servlets\SvRegistrarCliente.class
 persistencia\RolJpaController.class
+logica\Cliente.class
 logica\Rol.class
 com\mycompany\tiendadoncarlos\JakartaRestConfiguration.class
 persistencia\exceptions\NonexistentEntityException.class
