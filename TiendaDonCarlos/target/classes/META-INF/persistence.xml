@@ -10,6 +10,7 @@
     <!-- Declara tus entidades manualmente o usa escaneo automático si el proveedor lo soporta -->
      <class>logica.Usuario</class>
      <class>logica.Rol</class>
+     <class>logica.Cliente</class>
 
 
     <properties>
