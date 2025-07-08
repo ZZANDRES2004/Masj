@@ -54,6 +54,15 @@ public class ControladoraPersistencia {
         e.printStackTrace();
     }
 }
+   public void crearCliente(logica.Cliente cli) {
+    ClienteJpaController clienteJPA = new ClienteJpaController();
+    try {
+        clienteJPA.create(cli);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
 
 
 }

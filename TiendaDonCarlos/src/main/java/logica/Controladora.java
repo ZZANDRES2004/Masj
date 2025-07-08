@@ -50,5 +50,9 @@ public class Controladora {
             controlPersis.modificarUsuario(usu);
         }
     }
+    public void crearCliente(Cliente cli) {
+    controlPersis.crearCliente(cli);
+}
+
 
 }
