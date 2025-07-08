@@ -11,6 +11,9 @@
      <class>logica.Usuario</class>
      <class>logica.Rol</class>
      <class>logica.Cliente</class>
+     <class>logica.Credito</class>
+
+
 
 
     <properties>

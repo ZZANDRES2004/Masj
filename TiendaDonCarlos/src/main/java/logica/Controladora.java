@@ -2,6 +2,7 @@ package logica;
 
 import java.util.List;
 import persistencia.ControladoraPersistencia;
+import java.util.Date;
 
 public class Controladora {
 
@@ -38,7 +39,7 @@ public class Controladora {
     public void inhabilitarUsuario(int id) {
         Usuario usu = controlPersis.traerUsuario(id);
         if (usu != null) {
-            usu.setActivo(false); // Suponiendo que tienes un atributo booleano "activo"
+            usu.setActivo(false);
             controlPersis.modificarUsuario(usu);
         }
     }
@@ -50,9 +51,36 @@ public class Controladora {
             controlPersis.modificarUsuario(usu);
         }
     }
+
+    // CLIENTES
     public void crearCliente(Cliente cli) {
-    controlPersis.crearCliente(cli);
+        controlPersis.crearCliente(cli);
+    }
+
+    public List<Cliente> traerClientes() {
+        return controlPersis.traerClientes();
+    }
+
+   public Cliente buscarCliente(int id) {
+    return controlPersis.buscarCliente(id);
+}
+   
+public void registrarCredito(Cliente cliente, Usuario usuario, double monto, int limiteDias) {
+    Credito credito = new Credito();
+    credito.setCliente(cliente);
+    credito.setUsuario(usuario);
+    credito.setMontoTotal(monto);
+    credito.setFechaEmision(new Date());
+
+    // Calcula fecha de vencimiento
+    Date fechaVencimiento = new Date(System.currentTimeMillis() + (limiteDias * 86400000L));
+    credito.setFechaVencimiento(fechaVencimiento);
+
+    credito.setLimiteDiasCredito(limiteDias);
+    credito.setEstado("Vigente");
+
+    controlPersis.crearCredito(credito);
 }
 
-
+   
 }
